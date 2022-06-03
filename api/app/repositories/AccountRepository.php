@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 use App\Models\Account;
+use Illuminate\Support\Facades\Log;
 
 class AccountRepository extends BaseRepository
 {
@@ -20,17 +21,17 @@ class AccountRepository extends BaseRepository
     }
 
     /**
-     * 
+     * @param Account $account
      */
-    function update($model, array $attributes)
+    function update($account, array $attributes)
     {
-        return DB::transaction(function () use ($model, $attributes) {
-            $updated = $model->update([
-                'password' => data_get($attributes, 'password')
+        return DB::transaction(function () use ($account, $attributes) {
+            $updated = $account->update([
+                'password' => data_get($attributes, 'password', $account->password)
             ]);
             if (!$updated)
                 throw new \Exception('Loi roi cha');
-            return $model;
+            return $account;
         });
     }
 

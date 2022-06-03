@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use App\Http\Requests\StoreAccountRequest;
 use App\Http\Requests\UpdateAccountRequest;
+use Illuminate\Http\Request;
+use App\Http\Resources\AccountResource;
+use App\Repositories\AccountRepository;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 
 class AccountController extends Controller
 {
@@ -16,6 +21,8 @@ class AccountController extends Controller
     public function index()
     {
         //
+        $accounts = Account::get();
+        return AccountResource::collection($accounts);
     }
 
     /**
@@ -31,12 +38,19 @@ class AccountController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAccountRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAccountRequest $request)
+    public function store(Request $request, AccountRepository $repository)
     {
-        //
+        // 
+        $payload = $request->only([
+            "user_name",
+            "password",
+            "is_admin"
+        ]);
+        $created = $repository->create($payload);
+        return new AccountResource($created);
     }
 
     /**
@@ -48,6 +62,8 @@ class AccountController extends Controller
     public function show(Account $account)
     {
         //
+
+        return new AccountResource($account);
     }
 
     /**
@@ -64,13 +80,19 @@ class AccountController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAccountRequest  $request
+     * 
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAccountRequest $request, Account $account)
+    public function update(Request $request, Account $account, AccountRepository $repository)
     {
         //
+        $payload = $request->only([
+            'password'
+        ]);
+        $updated = $repository->update($account, $payload);
+        return new AccountResource($updated);
     }
 
     /**
@@ -79,8 +101,10 @@ class AccountController extends Controller
      * @param  \App\Models\Account  $account
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Account $account)
+    public function destroy(Account $account, AccountRepository $repository)
     {
         //
+        $deleted = $repository->forceDelete($account);
+        return new AccountResource($deleted);
     }
 }
