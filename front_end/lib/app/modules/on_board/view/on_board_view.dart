@@ -10,53 +10,58 @@ import 'package:lottie/lottie.dart';
 
 import '../../../core/value/constants/app_constants.dart';
 
+part 'widgets/main_bubble_background.dart';
+part 'widgets/introduction.dart';
+
 class OnBoardView extends StatelessWidget {
   const OnBoardView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: IntroductionScreen(
-          showSkipButton: true,
-          dotsDecorator: DotsDecorator(
-              activeColor: kPrimary,
-              color: kPrimary.withOpacity(0.15),
-              spacing: const EdgeInsets.symmetric(horizontal: 3.0),
-              //
-          ),
-          pages: [
-            PageViewModel(
-              title: 'AAAAAAAAAA',
-              body: 'asdasdasdasd',
-              image: _buildLottie(LottiePath.BOOK_LOADING),
-            ),
-            PageViewModel(
-              title: 'CCCCCCCC',
-              body: 'asdasddfsfsdasdasd',
-              image: _buildLottie(LottiePath.QUIZ_MODE),
-            ),
-            PageViewModel(
-              title: 'BBBBBBBBB',
-              body: 'dfsdfsdfsd',
-              image: _buildLottie(LottiePath.CHECK_MARK, repeat: false),
-            ),
-          ],
-          done: Text('Get start', style: buttonTextStyle()),
-          next: Text('Next', style: subTextStyle(color: kPrimary)),
-          skip: Text('Skip', style: subTextStyle()),
-          doneStyle: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(kPrimary),
-          ),
-          onDone: () {},
-        ),
+      body: Stack(
+        children: [
+          _buildMainBubbleBg(),
+          _buildConerBubble(),
+          _buildIntroductionBody(),
+        ],
       ),
     );
   }
 
-  Widget _buildLottie(String path, {bool repeat = true}) {
-    return Center(
-      child: Lottie.asset(path, width: 350, repeat: repeat),
+  Widget _buildIntroductionBody() {
+    return const SafeArea(
+      child: _Introduction(),
     );
   }
+
+  Widget _buildMainBubbleBg() {
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 40, horizontal: 40),
+      child: _MainBubbleBackground(),
+    );
+  }
+
+  Widget _buildConerBubble() {
+    return Positioned(
+      top: 0,
+      left: 0,
+      child: Image.asset(
+        ImageRasterPath.BUBBLE,
+        width: 80,
+      ),
+    );
+  }
+
+  LinearGradient getGradientColor() {
+    return const LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color(0xFF8AD4FF),
+        kWhite,
+      ],
+    );
+  }
+
 }

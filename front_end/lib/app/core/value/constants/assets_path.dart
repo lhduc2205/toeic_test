@@ -18,7 +18,9 @@ class LottiePath {
 class ImageRasterPath {
   static const _folderPath = "assets/images/raster";
 
-  static const googleLogo = "$_folderPath/google-logo.png";
+  static const GOOGLE_LOGO = "$_folderPath/google-logo.png";
+  static const INTRODUCTION_BACKGROUND = "$_folderPath/introduction_bg.png";
+  static const BUBBLE = "$_folderPath/bubble.png";
 }
 
 class ImageVectorPath {

@@ -33,10 +33,13 @@ class AppTheme {
       );
 }
 
-TextStyle titleTextStyle({Color? color}) {
+TextStyle titleTextStyle({Color? color, double? fontSize}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-        fontSize: 25, color: color ?? kPrimary, fontWeight: FontWeight.bold),
+      fontSize: fontSize ?? 25,
+      color: color ?? kPrimary,
+      fontWeight: FontWeight.bold,
+    ),
   );
 }
 
@@ -49,11 +52,12 @@ TextStyle subTextStyle({Color? color}) {
   );
 }
 
-TextStyle normalTextStyle({Color? color}) {
+TextStyle normalTextStyle({Color? color, FontWeight? fontWeight}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
       fontSize: 16,
       color: color ?? kNormalText,
+      fontWeight: fontWeight ?? FontWeight.normal,
     ),
   );
 }
