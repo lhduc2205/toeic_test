@@ -17,7 +17,7 @@ const kSonicSilver = Color(0xFF757575);
 const kWhite = Colors.white;
 const kBlack = Color(0xFF202124);
 
-const kNormalText = Color(0xFF8F96A3);
+const kNormalText = Color(0xFF949DAD);
 
 const kInputFill = Color(0xFFF4F7FF);
 const subTextWhite = Color(0xFFF1F1F1);

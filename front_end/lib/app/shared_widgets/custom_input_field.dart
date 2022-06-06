@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:front_end/app/core/value/constants/app_constants.dart';
 
 class CustomInputField extends StatelessWidget {
-  final String hintText;
-  final IconData suffixIcon;
+  final String? hintText;
+  final String? label;
+  final IconData? suffixIcon;
+  final String? suffixText;
+  final String? prefixText;
+  final IconData? prefixIcon;
   final bool? obscureText;
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
@@ -12,9 +16,13 @@ class CustomInputField extends StatelessWidget {
 
   const CustomInputField({
     Key? key,
-    required this.hintText,
-    required this.suffixIcon,
+    this.hintText,
+    this.label,
+    this.suffixIcon,
     this.obscureText,
+    this.suffixText,
+    this.prefixText,
+    this.prefixIcon,
     this.validator,
     this.onChanged,
     this.fillColor,
@@ -26,7 +34,13 @@ class CustomInputField extends StatelessWidget {
     return TextFormField(
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
+        labelText: label == null ? null : label!,
         hintText: hintText,
+        suffixText: suffixText,
+        prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
+        prefixStyle: const TextStyle(
+          color: kNormalText,
+        ),
         suffixIcon: GestureDetector(
           onTap: onTap,
           child: Icon(suffixIcon, color: kNormalText),
