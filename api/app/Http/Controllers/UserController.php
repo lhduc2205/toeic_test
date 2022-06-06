@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Examinee;
+use App\Models\User;
 use App\Http\Requests\StoreExamineeRequest;
 use App\Http\Requests\UpdateExamineeRequest;
 
@@ -45,7 +45,7 @@ class ExamineeController extends Controller
      * @param  \App\Models\Examinee  $examinee
      * @return \Illuminate\Http\Response
      */
-    public function show(Examinee $examinee)
+    public function show(User $examinee)
     {
         //
     }
@@ -56,7 +56,7 @@ class ExamineeController extends Controller
      * @param  \App\Models\Examinee  $examinee
      * @return \Illuminate\Http\Response
      */
-    public function edit(Examinee $examinee)
+    public function edit(User $examinee)
     {
         //
     }
@@ -68,7 +68,7 @@ class ExamineeController extends Controller
      * @param  \App\Models\Examinee  $examinee
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateExamineeRequest $request, Examinee $examinee)
+    public function update(UpdateExamineeRequest $request, User $examinee)
     {
         //
     }
@@ -79,7 +79,7 @@ class ExamineeController extends Controller
      * @param  \App\Models\Examinee  $examinee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Examinee $examinee)
+    public function destroy(User $examinee)
     {
         //
     }

@@ -25,6 +25,9 @@ class StoreAccountRequest extends FormRequest
     {
         return [
             //
+            'user_name' => 'string|required',
+            'password' => 'numeric',
+            'is_admin' => 'boolean'
         ];
     }
 }
