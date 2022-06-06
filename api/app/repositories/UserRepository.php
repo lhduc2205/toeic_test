@@ -3,16 +3,16 @@
 namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
-use App\Models\Account;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 
-class AccountRepository extends BaseRepository
+class UserRepository extends BaseRepository
 {
     function create(array $attributes)
     {
         return DB::transaction(function () use ($attributes) {
-            $created = Account::create([
-                'user_name' => data_get($attributes, 'user_name'),
+            $created = User::create([
+                'email' => data_get($attributes, 'email'),
                 'password' => data_get($attributes, 'password'),
                 'is_admin' => data_get($attributes, 'is_admin', false)
             ]);
@@ -21,17 +21,17 @@ class AccountRepository extends BaseRepository
     }
 
     /**
-     * @param Account $account
+     * @param User $user
      */
-    function update($account, array $attributes)
+    function update($user, array $attributes)
     {
-        return DB::transaction(function () use ($account, $attributes) {
-            $updated = $account->update([
-                'password' => data_get($attributes, 'password', $account->password)
+        return DB::transaction(function () use ($user, $attributes) {
+            $updated = $user->update([
+                'password' => data_get($attributes, 'password', $user->password)
             ]);
             if (!$updated)
                 throw new \Exception('Loi roi cha');
-            return $account;
+            return $user;
         });
     }
 
