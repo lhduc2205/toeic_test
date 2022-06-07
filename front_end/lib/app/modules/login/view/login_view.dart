@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:front_end/app/core/value/constants/app_constants.dart';
 import 'package:front_end/app/core/value/theme/theme.dart';
-import 'package:front_end/app/repository/auth_repository.dart';
+import 'package:front_end/app/data/repository/auth_repository.dart';
 import 'package:front_end/app/shared_widgets/horizon_divider.dart';
 import 'package:lottie/lottie.dart';
 
@@ -13,12 +13,9 @@ import '../../../shared_widgets/custom_input_field.dart';
 import '../../../shared_widgets/default_button.dart';
 import '../../../shared_widgets/default_gradient_container.dart';
 import '../../../shared_widgets/rounded_container.dart';
-import '../bloc/auth/form_submission_status.dart';
-import '../bloc/login_bloc.dart';
-import '../bloc/login_event.dart';
-import '../bloc/login_state.dart';
+import '../../../cubits/login/login_cubit.dart';
 
-part 'widgets/username_input.dart';
+part 'widgets/email_input.dart';
 
 part 'widgets/password_input.dart';
 
@@ -85,7 +82,10 @@ class LoginView extends StatelessWidget {
     return Expanded(
       child: RoundedContainer(
         child: SingleChildScrollView(
-          child: _LoginForm(),
+          child: BlocProvider(
+            create: (context) => LoginCubit(context.read<AuthRepository>()),
+            child: _LoginForm(),
+          ),
         ),
       ),
     );
@@ -99,16 +99,18 @@ class _LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: BlocProvider(
-        create: (context) => LoginBloc(
-          authRepo: context.read<AuthRepository>(),
-        ),
+    return BlocListener<LoginCubit, LoginState>(
+      listener: (context, state) {
+        if(state.status == LoginStatus.error) {
+
+        }
+      },
+      child: Form(
+        key: _formKey,
         child: Column(
           children: [
             const SizedBox(height: AppStyle.defaultSpacing),
-            const _UsernameInput(),
+            const _EmailInput(),
             const SizedBox(height: 10),
             const _PasswordInput(),
             const SizedBox(height: AppStyle.defaultSpacing),

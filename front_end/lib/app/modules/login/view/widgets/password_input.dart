@@ -5,26 +5,19 @@ class _PasswordInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocBuilder<LoginCubit, LoginState>(
+      buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return CustomInputField(
           obscureText: true,
           suffixIcon: IconlyLight.hide,
           hintText: 'Password',
           fillColor: AppColor.inputFill,
-          validator: (value) {
-            if (state.isValidPassword) {
-              return AppErrorString.SHORT_PASSWORD;
-            }
-            if (state.isNullablePassword) {
-              return AppErrorString.PASSWORD_REQUIRED;
-            } else {
-              return null;
-            }
+          onChanged: (password) {
+            context.read<LoginCubit>().passwordChanged(
+                  password,
+                );
           },
-          onChanged: (value) => context.read<LoginBloc>().add(
-            LoginPasswordChanged(password: value),
-          ),
         );
       },
     );

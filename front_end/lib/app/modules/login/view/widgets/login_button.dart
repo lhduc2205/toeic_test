@@ -10,22 +10,15 @@ class _LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocBuilder<LoginCubit, LoginState>(
+      buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
-        if (state is FormSubmitting) {
+        if (state.status == LoginStatus.submitting) {
           return const CircularProgressIndicator();
         } else {
           return DefaultButton(
             onPressed: () {
-              if (formKey.currentState!.validate()) {
-                // context.read<LoginBloc>().add(
-                //       LoginSubmitted(
-                //         state.email,
-                //         state.password,
-                //       ),
-                //     );
-                print('asdasd');
-              }
+              context.read<LoginCubit>().logInWithCredentials();
             },
             child: Text(
               'Login',

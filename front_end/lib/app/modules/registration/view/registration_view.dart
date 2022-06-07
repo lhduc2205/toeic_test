@@ -1,9 +1,12 @@
 library registration_view;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:front_end/app/core/value/constants/app_constants.dart';
 import 'package:front_end/app/core/value/theme/theme.dart';
+import 'package:front_end/app/cubits/registration/registration_cubit.dart';
+import 'package:front_end/app/data/repository/auth_repository.dart';
 import 'package:front_end/app/shared_widgets/custom_input_field.dart';
 import 'package:front_end/app/shared_widgets/default_button.dart';
 import 'package:front_end/app/shared_widgets/rounded_container.dart';
@@ -12,11 +15,16 @@ import 'package:lottie/lottie.dart';
 import '../../../shared_widgets/custom_text_button.dart';
 import '../../../shared_widgets/default_gradient_container.dart';
 
-part 'widgets/username_input.dart';
+part 'widgets/email_input.dart';
+
 part 'widgets/password_input.dart';
+
 part 'widgets/repeat_password_input.dart';
+
 part 'widgets/license_text.dart';
+
 part 'widgets/submit_button.dart';
+
 part 'widgets/login_button.dart';
 
 class RegistrationView extends StatelessWidget {
@@ -31,7 +39,7 @@ class RegistrationView extends StatelessWidget {
             children: [
               _buildHeader(),
               const SizedBox(height: 10),
-              _buildSignUpForm(),
+              _buildSignUpForm(context),
             ],
           ),
         ),
@@ -53,10 +61,16 @@ class RegistrationView extends StatelessWidget {
     );
   }
 
-  Widget _buildSignUpForm() {
-    return const Expanded(
+  Widget _buildSignUpForm(BuildContext context) {
+    return Expanded(
       child: RoundedContainer(
-        child: _SignUpForm(),
+        child: BlocProvider<RegistrationCubit>(
+          create: (_) =>
+              RegistrationCubit(
+                context.read<AuthRepository>(),
+              ),
+          child: const _SignUpForm(),
+        ),
       ),
     );
   }
@@ -67,12 +81,17 @@ class _SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return BlocListener<RegistrationCubit, RegistrationState>(
+      listener: (context, state) {
+        if(state.status == RegistrationStatus.error) {
+
+        }
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: AppStyle.defaultSpacing),
-          const _UsernameInput(),
+          const _EmailInput(),
           const SizedBox(height: 10),
           const _PasswordInput(),
           const SizedBox(height: 10),
@@ -98,4 +117,3 @@ class _SignUpForm extends StatelessWidget {
     );
   }
 }
-
