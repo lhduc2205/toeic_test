@@ -38,6 +38,9 @@ class CustomInputField extends StatelessWidget {
         hintText: hintText,
         suffixText: suffixText,
         prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
+        hintStyle:  const TextStyle(
+          color: AppColor.normalText,
+        ),
         prefixStyle: const TextStyle(
           color: AppColor.normalText,
         ),

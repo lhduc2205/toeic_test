@@ -10,6 +10,7 @@ class _RepeatPasswordInput extends StatelessWidget {
           previous.passwordCheck != current.passwordCheck,
       builder: (context, state) {
         return CustomInputField(
+          obscureText: true,
           hintText: 'Repeat password',
           suffixIcon: IconlyLight.lock,
           onChanged: (password) {

@@ -64,12 +64,13 @@ class RegistrationView extends StatelessWidget {
   Widget _buildSignUpForm(BuildContext context) {
     return Expanded(
       child: RoundedContainer(
-        child: BlocProvider<RegistrationCubit>(
-          create: (_) =>
-              RegistrationCubit(
-                context.read<AuthRepository>(),
-              ),
-          child: const _SignUpForm(),
+        child: SingleChildScrollView(
+          child: BlocProvider<RegistrationCubit>(
+            create: (_) => RegistrationCubit(
+              context.read<AuthRepository>(),
+            ),
+            child: const _SignUpForm(),
+          ),
         ),
       ),
     );
@@ -83,9 +84,7 @@ class _SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<RegistrationCubit, RegistrationState>(
       listener: (context, state) {
-        if(state.status == RegistrationStatus.error) {
-
-        }
+        if (state.status == RegistrationStatus.error) {}
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,9 +109,14 @@ class _SignUpForm extends StatelessWidget {
   Widget _buildLoginRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Text('Join us before?'),
-        _LoginButton(),
+      children: [
+        Text(
+          'Join us before?',
+          style: subTextStyle(
+            color: AppColor.black,
+          ),
+        ),
+        const _LoginButton(),
       ],
     );
   }

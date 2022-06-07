@@ -9,6 +9,7 @@ class _PasswordInput extends StatelessWidget {
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return CustomInputField(
+          obscureText: true,
           hintText: 'Password',
           suffixIcon: IconlyLight.lock,
           onChanged: (password) {
