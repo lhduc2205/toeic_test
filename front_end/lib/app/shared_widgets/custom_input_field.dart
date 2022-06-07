@@ -39,34 +39,34 @@ class CustomInputField extends StatelessWidget {
         suffixText: suffixText,
         prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
         prefixStyle: const TextStyle(
-          color: kNormalText,
+          color: AppColor.normalText,
         ),
         suffixIcon: GestureDetector(
           onTap: onTap,
-          child: Icon(suffixIcon, color: kNormalText),
+          child: Icon(suffixIcon, color: AppColor.normalText),
         ),
-        fillColor: kInputFill,
+        fillColor: AppColor.inputFill,
         filled: true,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
-            kBorderRadius,
+            AppStyle.defaultBorderRadius,
           ),
           borderSide: BorderSide.none,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(
-            kBorderRadius,
+            AppStyle.defaultBorderRadius,
           ),
           borderSide: BorderSide(
-              color: fillColor ?? kPrimary
+              color: fillColor ?? AppColor.primary
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: kPrimary
+            color: AppColor.primary
           ),
           borderRadius: BorderRadius.circular(
-            kBorderRadius,
+            AppStyle.defaultBorderRadius,
           ),
         ),
         contentPadding: const EdgeInsets.all(15),

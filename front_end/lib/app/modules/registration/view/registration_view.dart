@@ -46,7 +46,7 @@ class RegistrationView extends StatelessWidget {
         Center(
           child: Text(
             AppString.SIGN_UP.toUpperCase(),
-            style: titleTextStyle(color: kWhite),
+            style: titleTextStyle(color: AppColor.white),
           ),
         ),
       ],
@@ -71,7 +71,7 @@ class _SignUpForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: kSpacing),
+          const SizedBox(height: AppStyle.defaultSpacing),
           const _UsernameInput(),
           const SizedBox(height: 10),
           const _PasswordInput(),
@@ -81,7 +81,7 @@ class _SignUpForm extends StatelessWidget {
           const _LicenseText(),
           const SizedBox(height: 40),
           const _SubmitButton(),
-          const SizedBox(height: kSpacing),
+          const SizedBox(height: AppStyle.defaultSpacing),
           _buildLoginRow(),
         ],
       ),

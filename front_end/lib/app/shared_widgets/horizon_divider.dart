@@ -17,19 +17,19 @@ class HorizonDivider extends StatelessWidget {
         Expanded(
           child: Container(
             height: 1,
-            color: kNormalText,
+            color: AppColor.normalText,
           ),
         ),
         const SizedBox(width: 10),
         Text(
           text,
-          style: const TextStyle(color: kNormalText),
+          style: const TextStyle(color: AppColor.normalText),
         ),
         const SizedBox(width: 10),
         Expanded(
           child: Container(
             height: 1,
-            color: kNormalText,
+            color: AppColor.normalText,
           ),
         ),
       ],

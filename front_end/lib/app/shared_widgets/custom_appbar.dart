@@ -10,11 +10,11 @@ AppBar customAppBar(BuildContext context,
     leading: GestureDetector(
       onTap: onTap ?? () => Navigator.of(context).pop(),
       child: CircleAvatar(
-        backgroundColor: kInputFill,
+        backgroundColor: AppColor.inputFill,
         radius: 10,
         child: Icon(
           backIcon ?? Icons.arrow_back_ios_new,
-          color: kPrimary,
+          color: AppColor.primary,
         ),
       ),
     ),

@@ -59,7 +59,7 @@ class OnBoardView extends StatelessWidget {
       end: Alignment.bottomCenter,
       colors: [
         Color(0xFF8AD4FF),
-        kWhite,
+        AppColor.white,
       ],
     );
   }

@@ -11,7 +11,7 @@ class _PasswordInput extends StatelessWidget {
           obscureText: true,
           suffixIcon: IconlyLight.hide,
           hintText: 'Password',
-          fillColor: kInputFill,
+          fillColor: AppColor.inputFill,
           validator: (value) {
             if (state.isValidPassword) {
               return AppErrorString.SHORT_PASSWORD;

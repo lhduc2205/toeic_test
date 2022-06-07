@@ -15,7 +15,7 @@ class ErrorView extends StatelessWidget {
         title: const Text(
           AppString.PAGE_NOT_FOUND,
           style: TextStyle(
-            color: kPrimary
+            color: AppColor.primary
           ),
         ),
       ),

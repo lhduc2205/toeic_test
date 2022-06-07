@@ -14,7 +14,7 @@ class _ForgotPassword extends StatelessWidget {
         },
         child: Text(
           AppString.FORGOT_PASSWORD,
-          style: normalTextStyle(color: kPrimary),
+          style: normalTextStyle(color: AppColor.primary),
         ),
       ),
     );

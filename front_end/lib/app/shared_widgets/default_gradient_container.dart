@@ -17,7 +17,7 @@ class DefaultGradientContainer extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
-        gradient: gradient ?? kPrimaryGradientColor,
+        gradient: gradient ?? AppColor.primaryGradientColor,
       ),
       child: child,
     );

@@ -60,7 +60,7 @@ class LoginView extends StatelessWidget {
         child: Text(
           AppString.LOGIN,
           style: titleTextStyle(
-            color: kWhite,
+            color: AppColor.white,
           ),
         ),
       ),
@@ -69,7 +69,9 @@ class LoginView extends StatelessWidget {
 
   Container _buildSecurityLottie() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: kSpacing),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppStyle.defaultSpacing,
+      ),
       width: double.infinity,
       child: Lottie.asset(
         LottiePath.SECURITY,
@@ -105,19 +107,19 @@ class _LoginForm extends StatelessWidget {
         ),
         child: Column(
           children: [
-            const SizedBox(height: kSpacing),
+            const SizedBox(height: AppStyle.defaultSpacing),
             const _UsernameInput(),
             const SizedBox(height: 10),
             const _PasswordInput(),
-            const SizedBox(height: kSpacing),
+            const SizedBox(height: AppStyle.defaultSpacing),
             const _ForgotPassword(),
             const SizedBox(height: 40),
             _LoginButton(formKey: _formKey),
             const SizedBox(height: 50),
             const HorizonDivider(text: AppString.LOGIN_WITH_GOOGLE),
-            const SizedBox(height: kSpacing),
+            const SizedBox(height: AppStyle.defaultSpacing),
             const _GoogleLoginButton(),
-            const SizedBox(height: kSpacing),
+            const SizedBox(height: AppStyle.defaultSpacing),
             _signUpRow(),
           ],
         ),

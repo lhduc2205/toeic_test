@@ -7,8 +7,8 @@ class _GoogleLoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultButton(
       onPressed: () {},
-      primaryColor: kNormalText,
-      borderColor: kNormalText,
+      primaryColor: AppColor.normalText,
+      borderColor: AppColor.normalText,
       isOutlinedButton: true,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -18,7 +18,7 @@ class _GoogleLoginButton extends StatelessWidget {
           Text(
             'Continue with Google',
             style: buttonTextStyle(
-              color: kBlack,
+              color: AppColor.black,
               fontWeight: FontWeight.normal,
               fontSize: 14,
             ),

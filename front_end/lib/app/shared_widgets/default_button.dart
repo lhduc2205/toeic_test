@@ -28,11 +28,11 @@ class DefaultButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: primaryColor ?? kPrimary,
+        primary: primaryColor ?? AppColor.primary,
         // padding: EdgeInsets.all(padding ?? 15),
         minimumSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kBorderRadius),
+          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
         ),
       ),
       child: child,
@@ -47,9 +47,9 @@ class DefaultButton extends StatelessWidget {
         // padding: EdgeInsets.all(padding ?? 15),
         minimumSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kBorderRadius),
+          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
         ),
-        side: BorderSide(color: borderColor ?? kPrimary),
+        side: BorderSide(color: borderColor ?? AppColor.primary),
       ),
       child: child,
     );

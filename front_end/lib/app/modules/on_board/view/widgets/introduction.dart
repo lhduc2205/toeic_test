@@ -11,16 +11,16 @@ class _Introduction extends StatelessWidget {
         dotsDecorator: _getDotDecorator(),
         pages: _getPages(),
         done: Text('Get start', style: buttonTextStyle()),
-        next: Text(
-          'Next',
-          style: normalTextStyle(
-            color: kPrimary,
-            fontWeight: FontWeight.bold,
-          )
-        ),
+        next: Text('Next',
+            style: normalTextStyle(
+              color: AppColor.primary,
+              fontWeight: FontWeight.bold,
+            )),
         skip: Text('Skip', style: normalTextStyle()),
         doneStyle: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(kPrimary),
+          backgroundColor: MaterialStateProperty.all<Color>(
+            AppColor.primary,
+          ),
         ),
         onDone: _onDone(context));
   }
@@ -57,8 +57,8 @@ class _Introduction extends StatelessWidget {
 
   DotsDecorator _getDotDecorator() {
     return DotsDecorator(
-      activeColor: kPrimary,
-      color: kPrimary.withOpacity(0.15),
+      activeColor: AppColor.primary,
+      color: AppColor.primary.withOpacity(0.15),
       spacing: const EdgeInsets.symmetric(horizontal: 3.0),
       size: const Size.square(12),
       activeSize: const Size.square(12),
@@ -67,7 +67,7 @@ class _Introduction extends StatelessWidget {
 
   PageDecoration _getPageDecoration() {
     return PageDecoration(
-        titleTextStyle: titleTextStyle(fontSize: 30, color: kBlack),
+        titleTextStyle: titleTextStyle(fontSize: 30, color: AppColor.black),
         bodyTextStyle: normalTextStyle());
   }
 

@@ -12,7 +12,7 @@ class _LoginButton extends StatelessWidget {
       child: Text(
         'Login',
         style: buttonTextStyle(
-          color: kPrimary,
+          color: AppColor.primary,
           fontSize: 14,
         ),
       ),

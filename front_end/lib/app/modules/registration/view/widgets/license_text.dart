@@ -13,12 +13,12 @@ class _LicenseText extends StatelessWidget {
               text: 'By signing up, you\'re agree to our '),
           TextSpan(
             text: 'Term & Conditions ',
-            style: subTextStyle(color: kPrimary),
+            style: subTextStyle(color: AppColor.primary),
           ),
           const TextSpan(text: 'and '),
           TextSpan(
             text: 'Privacy Policy',
-            style: subTextStyle(color: kPrimary),
+            style: subTextStyle(color: AppColor.primary),
           ),
         ],
       ),
