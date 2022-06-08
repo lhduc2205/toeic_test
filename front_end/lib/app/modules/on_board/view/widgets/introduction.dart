@@ -31,19 +31,19 @@ class _Introduction extends StatelessWidget {
         title: 'Widen knowledge',
         body:
             'Now you can improve your English skill\n any time right from mobile.',
-        image: _buildLottie(LottiePath.BOOK_LOADING),
+        image: _buildLottie(LottiePath.bookLoading),
         decoration: _getPageDecoration(),
       ),
       PageViewModel(
         title: 'Test your skills',
         body: 'Check your Listening and Reading skills\n whenever you want.',
-        image: _buildLottie(LottiePath.QUIZ_MODE),
+        image: _buildLottie(LottiePath.quizMode),
         decoration: _getPageDecoration(),
       ),
       PageViewModel(
         title: 'Achieve Certificate',
         body: 'Increase your ability to achieve\n your expected goals.',
-        image: _buildLottie(LottiePath.CHECK_MARK, repeat: false),
+        image: _buildLottie(LottiePath.checkMark, repeat: false),
         decoration: _getPageDecoration(),
       ),
     ];

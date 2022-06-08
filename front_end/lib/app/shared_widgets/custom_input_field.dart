@@ -13,6 +13,7 @@ class CustomInputField extends StatelessWidget {
   final Function(String)? onChanged;
   final Color? fillColor;
   final VoidCallback? onTap;
+  final TextEditingController? controller;
 
   const CustomInputField({
     Key? key,
@@ -26,18 +27,23 @@ class CustomInputField extends StatelessWidget {
     this.validator,
     this.onChanged,
     this.fillColor,
-    this.onTap
+    this.onTap,
+    this.controller
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureText ?? false,
       decoration: InputDecoration(
         labelText: label == null ? null : label!,
         hintText: hintText,
         suffixText: suffixText,
         prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
+        hintStyle:  const TextStyle(
+          color: AppColor.normalText,
+        ),
         prefixStyle: const TextStyle(
           color: AppColor.normalText,
         ),

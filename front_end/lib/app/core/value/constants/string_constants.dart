@@ -1,27 +1,28 @@
 part of app_constants;
 
 class AppString {
-  static const String LOGIN = 'LOGIN';
-  static const String SIGN_UP = 'Sign up';
-  static const String SUBMIT = 'Submit';
-  static const String FORGOT_PASSWORD = 'Forgot password?';
-  static const String LOGIN_WITH_GOOGLE = 'Login with Google';
-  static const String WELCOME = 'Welcome Back';
-  static const String DONT_HAVE_ACCOUNT = 'Don\'t have an account?';
-  static const String ERROR = 'Error';
-  static const String OOPS = 'Oops';
-  static const String PAGE_NOT_FOUND = 'Page not found';
-  static const String LOGIN_INTRODUCTION =
+  static const String login = 'LOGIN';
+  static const String signUp = 'Sign up';
+  static const String registration = 'Registration';
+  static const String submit = 'Submit';
+  static const String forgotPassword = 'Forgot password?';
+  static const String loginWithGoogle = 'Login with Google';
+  static const String welcome = 'Welcome Back';
+  static const String dontHaveAccount = 'Don\'t have an account?';
+  static const String error = 'Error';
+  static const String oops = 'Oops';
+  static const String pageNotFound = 'Page not found';
+  static const String loginIntroduction =
       'We happy to see you again. To use your account, you should log in first';
 }
 
 class AppErrorString {
   static final RegExp emailValidatorRegExp =
-      RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-  static const String USERNAME_REQUIRED = "Username is required";
-  static const String INVALID_USERNAME = "Invalid username address";
-  static const String PASSWORD_REQUIRED = "Password is required";
-  static const String SHORT_PASSWORD =
-      "Password must be at least 6 characters";
-  static const String DONT_MATCH_PASS = "Password don't match";
+      RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+');
+  static const String usernameRequired = 'Username is required';
+  static const String invalidUsername = 'Invalid username address';
+  static const String passwordRequired = 'Password is required';
+  static const String shortPassword =
+      'Password must be at least 6 characters';
+  static const String dontMatchPassword = "Password don't match";
 }

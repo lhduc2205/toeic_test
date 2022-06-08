@@ -13,14 +13,14 @@ class ErrorView extends StatelessWidget {
       appBar: customAppBar(
         context,
         title: const Text(
-          AppString.PAGE_NOT_FOUND,
+          AppString.pageNotFound,
           style: TextStyle(
             color: AppColor.primary
           ),
         ),
       ),
       body: Center(
-        child: Lottie.asset(LottiePath.ERROR_404),
+        child: Lottie.asset(LottiePath.error404),
       ),
     );
   }

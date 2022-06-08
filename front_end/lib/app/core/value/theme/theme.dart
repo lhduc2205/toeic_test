@@ -15,7 +15,7 @@ class AppTheme {
         // primarySwatch: Colors.indigo,
         textTheme:
             GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme).apply(
-          bodyColor: AppColor.sonicSilver,
+          bodyColor: AppColor.black,
         ),
         iconTheme: const IconThemeData(color: AppColor.normalText),
         elevatedButtonTheme: ElevatedButtonThemeData(

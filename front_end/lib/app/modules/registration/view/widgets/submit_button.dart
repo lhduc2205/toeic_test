@@ -5,12 +5,29 @@ class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultButton(
-      onPressed: () {},
-      child: Text(
-        AppString.SUBMIT,
-        style: buttonTextStyle(),
-      ),
+    return BlocBuilder<RegistrationCubit, RegistrationState>(
+      buildWhen: (previous, current) => previous.status != current.status,
+      builder: (context, state) {
+        if(state.status == RegistrationStatus.submitting) {
+          return DefaultButton(
+            buttonState: ButtonState.loading,
+            onPressed: () { },
+            child: Text(
+              'Submitting...',
+              style: buttonTextStyle(),
+            ),
+          );
+        }
+        return DefaultButton(
+          onPressed: () {
+            context.read<RegistrationCubit>().registerFormSubmitted();
+          },
+          child: Text(
+            AppString.submit,
+            style: buttonTextStyle(),
+          ),
+        );
+      },
     );
   }
 }

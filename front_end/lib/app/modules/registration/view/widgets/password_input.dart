@@ -5,9 +5,18 @@ class _PasswordInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomInputField(
-      hintText: 'Password',
-      suffixIcon: IconlyLight.lock,
+    return BlocBuilder<RegistrationCubit, RegistrationState>(
+      buildWhen: (previous, current) => previous.password != current.password,
+      builder: (context, state) {
+        return CustomInputField(
+          obscureText: true,
+          hintText: 'Password',
+          suffixIcon: IconlyLight.lock,
+          onChanged: (password) {
+            context.read<RegistrationCubit>().passwordChanged(password);
+          },
+        );
+      },
     );
   }
 }

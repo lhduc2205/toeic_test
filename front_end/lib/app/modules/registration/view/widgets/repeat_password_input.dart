@@ -5,9 +5,19 @@ class _RepeatPasswordInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomInputField(
-      hintText: 'Repeat password',
-      suffixIcon: IconlyLight.lock,
+    return BlocBuilder<RegistrationCubit, RegistrationState>(
+      buildWhen: (previous, current) =>
+          previous.passwordCheck != current.passwordCheck,
+      builder: (context, state) {
+        return CustomInputField(
+          obscureText: true,
+          hintText: 'Repeat password',
+          suffixIcon: IconlyLight.lock,
+          onChanged: (password) {
+            context.read<RegistrationCubit>().passwordCheckChanged(password);
+          },
+        );
+      },
     );
   }
 }

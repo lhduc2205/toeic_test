@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "849207192171",
+    "project_id": "toeictest-28cab",
+    "storage_bucket": "toeictest-28cab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849207192171:android:0c272858abbe558eb95f2e",
+        "android_client_info": {
+          "package_name": "com.example.front_end"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849207192171-geadvdgudn5e4kpnbogpun6dj9eoav49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4nmhwBykREXzC8phUA1MruL7MN-ICEPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849207192171-geadvdgudn5e4kpnbogpun6dj9eoav49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

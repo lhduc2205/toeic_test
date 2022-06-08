@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:front_end/app/modules/login/view/login_view.dart';
 import 'package:front_end/app/modules/on_board/view/on_board_view.dart';
 
-import 'app/modules/404/error_view.dart';
-import 'app/modules/home/view/home_view.dart';
-import 'app/modules/registration/view/registration_view.dart';
-import 'app/shared_widgets/custom_page_route.dart';
+import '../modules/404/error_view.dart';
+import '../modules/home/view/home_view.dart';
+import '../modules/registration/view/registration_view.dart';
+import '../shared_widgets/custom_page_route.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
