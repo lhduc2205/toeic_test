@@ -8,6 +8,7 @@ use Database\Seeders\Traits\TruncateTable;
 use Database\Seeders\Traits\DisableForeignKeys;
 use App\Models\User;
 use Illuminate\Notifications\Action;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -22,7 +23,15 @@ class UserSeeder extends Seeder
         //
         $this->disableForeignKeys();
         $this->truncate('users');
-        User::factory(5)->create();
+        User::factory(1)->create([
+            "name" => "admin",
+            "gender" => true,
+            "birthdate" => "2000/05/05",
+            "email" => "admin@admin",
+            "password" => Hash::make("admin"),
+            "is_admin" => true
+        ]);
+        User::factory(4)->create();
         $this->enableForeignKeys();
     }
 }
