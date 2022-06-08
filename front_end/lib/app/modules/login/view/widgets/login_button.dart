@@ -13,8 +13,16 @@ class _LoginButton extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
-        if (state.status == LoginStatus.submitting) {
-          return const CircularProgressIndicator();
+        if (state.status == FormzStatus.submissionInProgress) {
+          return DefaultButton(
+            buttonState: ButtonState.loading,
+            onPressed: () {
+            },
+            child: Text(
+              'Authenticating...',
+              style: buttonTextStyle(),
+            ),
+          );
         } else {
           return DefaultButton(
             onPressed: () {

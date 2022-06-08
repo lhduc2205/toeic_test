@@ -3,6 +3,7 @@ library registration_view;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:formz/formz.dart';
 import 'package:front_end/app/core/value/constants/app_constants.dart';
 import 'package:front_end/app/core/value/theme/theme.dart';
 import 'package:front_end/app/cubits/registration/registration_cubit.dart';
@@ -19,7 +20,7 @@ part 'widgets/email_input.dart';
 
 part 'widgets/password_input.dart';
 
-part 'widgets/repeat_password_input.dart';
+part 'widgets/confirmed_password_input.dart';
 
 part 'widgets/license_text.dart';
 
@@ -85,7 +86,15 @@ class _SignUpForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<RegistrationCubit, RegistrationState>(
       listener: (context, state) {
-        if (state.status == RegistrationStatus.error) {}
+        if (state.status.isSubmissionSuccess) {
+          Navigator.of(context).pop();
+        } else if (state.status.isSubmissionFailure) {
+          ScaffoldMessenger.of(context)
+            ..hideCurrentSnackBar()
+            ..showSnackBar(
+              SnackBar(content: Text(state.errorMessage ?? 'Sign Up Failure')),
+            );
+        }
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,7 +104,7 @@ class _SignUpForm extends StatelessWidget {
           const SizedBox(height: 10),
           const _PasswordInput(),
           const SizedBox(height: 10),
-          const _RepeatPasswordInput(),
+          const _ConfirmedPasswordInput(),
           const SizedBox(height: 30),
           const _LicenseText(),
           const SizedBox(height: 40),

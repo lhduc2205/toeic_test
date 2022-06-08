@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:front_end/app/data/models/user_model.dart';
+import 'package:meta/meta.dart';
 
 import '../../data/repository/auth_repository.dart';
 
@@ -11,15 +12,12 @@ part 'app_event.dart';
 part 'app_state.dart';
 
 class AppBloc extends Bloc<AppEvent, AppState> {
-  final AuthRepository _authRepository;
-  StreamSubscription<UserModel>? _userSubscription;
-
   AppBloc({required AuthRepository authRepository})
       : _authRepository = authRepository,
         super(
           authRepository.currentUser.isNotEmpty
               ? AppState.authenticated(authRepository.currentUser)
-              : const AppState.unauthenticated(),
+              : const AppState.newComer(),
         ) {
     on<AppUserChanged>(_onUserChanged);
     on<AppLogoutRequested>(_onLogoutRequested);
@@ -28,6 +26,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       (user) => add(AppUserChanged(user)),
     );
   }
+
+
+  final AuthRepository _authRepository;
+  StreamSubscription<UserModel>? _userSubscription;
 
   void _onUserChanged(
     AppUserChanged event,

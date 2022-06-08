@@ -1,9 +1,6 @@
 part of login_view;
 
 class _EmailInput extends StatelessWidget {
-  _EmailInput({Key? key}) : super(key: key);
-
-  TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +8,11 @@ class _EmailInput extends StatelessWidget {
       buildWhen: (previous, current) => previous.email != current.email,
       builder: (context, state) {
         return CustomInputField(
-          controller: controller,
+          key: const Key('loginForm_emailInput_textField'),
+          keyboardType: TextInputType.emailAddress,
           suffixIcon: IconlyLight.profile,
           hintText: 'Email',
+          errorText: state.email.invalid ? 'invalid email' : null,
           onChanged: (email) {
             context.read<LoginCubit>().emailChanged(
                   email,

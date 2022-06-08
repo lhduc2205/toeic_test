@@ -7,6 +7,7 @@ class CustomInputField extends StatelessWidget {
   final IconData? suffixIcon;
   final String? suffixText;
   final String? prefixText;
+  final String? errorText;
   final IconData? prefixIcon;
   final bool? obscureText;
   final String? Function(String?)? validator;
@@ -14,6 +15,7 @@ class CustomInputField extends StatelessWidget {
   final Color? fillColor;
   final VoidCallback? onTap;
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
 
   const CustomInputField({
     Key? key,
@@ -23,12 +25,14 @@ class CustomInputField extends StatelessWidget {
     this.obscureText,
     this.suffixText,
     this.prefixText,
+    this.errorText,
     this.prefixIcon,
     this.validator,
     this.onChanged,
     this.fillColor,
     this.onTap,
-    this.controller
+    this.controller,
+    this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -36,12 +40,14 @@ class CustomInputField extends StatelessWidget {
     return TextFormField(
       controller: controller,
       obscureText: obscureText ?? false,
+      keyboardType: keyboardType,
       decoration: InputDecoration(
         labelText: label == null ? null : label!,
         hintText: hintText,
         suffixText: suffixText,
+        errorText: errorText,
         prefixIcon: prefixIcon == null ? null : Icon(prefixIcon),
-        hintStyle:  const TextStyle(
+        hintStyle: const TextStyle(
           color: AppColor.normalText,
         ),
         prefixStyle: const TextStyle(
@@ -63,20 +69,17 @@ class CustomInputField extends StatelessWidget {
           borderRadius: BorderRadius.circular(
             AppStyle.defaultBorderRadius,
           ),
-          borderSide: BorderSide(
-              color: fillColor ?? AppColor.primary
-          ),
+          borderSide: BorderSide(color: fillColor ?? AppColor.primary),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: AppColor.primary
+            color: AppColor.primary,
           ),
           borderRadius: BorderRadius.circular(
             AppStyle.defaultBorderRadius,
           ),
         ),
         contentPadding: const EdgeInsets.all(15),
-
       ),
       validator: validator,
       onChanged: onChanged,

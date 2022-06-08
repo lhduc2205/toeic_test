@@ -19,9 +19,10 @@ class _SubmitButton extends StatelessWidget {
           );
         }
         return DefaultButton(
-          onPressed: () {
+          key: const Key('signUpForm_continue_defaultButton'),
+          onPressed: state.status.isValidated ? () {
             context.read<RegistrationCubit>().registerFormSubmitted();
-          },
+          } : null,
           child: Text(
             AppString.submit,
             style: buttonTextStyle(),
