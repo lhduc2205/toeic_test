@@ -22,7 +22,7 @@ class OnBoardView extends StatelessWidget {
       body: Stack(
         children: [
           _buildMainBubbleBg(),
-          _buildConerBubble(),
+          _buildConnerBubble(),
           _buildIntroductionBody(),
         ],
       ),
@@ -42,13 +42,14 @@ class OnBoardView extends StatelessWidget {
     );
   }
 
-  Widget _buildConerBubble() {
+  Widget _buildConnerBubble() {
     return Positioned(
       top: 0,
       left: 0,
       child: Image.asset(
         ImageRasterPath.bubble,
         width: 80,
+        color: AppColor.inputFill,
       ),
     );
   }

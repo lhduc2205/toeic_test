@@ -30,6 +30,7 @@ part 'widgets/login_button.dart';
 class RegistrationView extends StatelessWidget {
   const RegistrationView({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

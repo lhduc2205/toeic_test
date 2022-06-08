@@ -49,7 +49,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     //   );
     //   emit(state.copyWith(status: RegistrationStatus.success));
     // } catch (_) {}
-    await Future.delayed(Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 5));
     emit(state.copyWith(status: RegistrationStatus.success));
   }
 }

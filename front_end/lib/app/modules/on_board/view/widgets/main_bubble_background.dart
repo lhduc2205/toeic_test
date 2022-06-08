@@ -8,6 +8,7 @@ class _MainBubbleBackground extends StatelessWidget {
     return Image.asset(
       ImageRasterPath.introductionBg,
       fit: BoxFit.cover,
+      color: AppColor.inputFill,
     );
   }
 }

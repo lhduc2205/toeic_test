@@ -27,6 +27,8 @@ dependencies:
   very_good_analysis: ^3.0.0
   flutter_cache_manager: ^3.3.0
   font_awesome_flutter: ^10.1.0
+  flow_builder: ^0.0.9
+  formz: ^0.4.1
 
 dev_dependencies:
   flutter_test:

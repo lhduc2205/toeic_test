@@ -72,7 +72,6 @@ class LoginView extends StatelessWidget {
       width: double.infinity,
       child: Lottie.asset(
         LottiePath.security,
-        repeat: false,
         height: 150,
       ),
     );
@@ -110,7 +109,7 @@ class _LoginForm extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: AppStyle.defaultSpacing),
-            const _EmailInput(),
+            _EmailInput(),
             const SizedBox(height: 10),
             const _PasswordInput(),
             const SizedBox(height: AppStyle.defaultSpacing),

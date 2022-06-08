@@ -10,13 +10,13 @@ import '../core/value/theme/theme.dart';
 import '../data/repository/auth_repository.dart';
 
 class App extends StatelessWidget {
-  final AuthRepository _authRepository;
-
   const App({
     Key? key,
     required AuthRepository authRepository,
   })  : _authRepository = authRepository,
         super(key: key);
+
+  final AuthRepository _authRepository;
 
   @override
   Widget build(BuildContext context) {
