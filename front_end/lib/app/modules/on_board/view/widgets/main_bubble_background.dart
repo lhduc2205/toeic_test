@@ -6,7 +6,7 @@ class _MainBubbleBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      ImageRasterPath.INTRODUCTION_BACKGROUND,
+      ImageRasterPath.introductionBg,
       fit: BoxFit.cover,
     );
   }

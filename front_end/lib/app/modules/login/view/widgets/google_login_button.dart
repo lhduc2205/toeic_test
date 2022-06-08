@@ -13,7 +13,7 @@ class _GoogleLoginButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(ImageRasterPath.GOOGLE_LOGO, width: 20),
+          Image.asset(ImageRasterPath.googleLogo, width: 20),
           const SizedBox(width: 10),
           Text(
             'Continue with Google',

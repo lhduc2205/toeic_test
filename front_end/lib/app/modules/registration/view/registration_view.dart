@@ -50,7 +50,7 @@ class RegistrationView extends StatelessWidget {
   Widget _buildHeader() {
     return Column(
       children: [
-        Lottie.asset(LottiePath.REGISTRATION, repeat: false, height: 150),
+        Lottie.asset(LottiePath.registration, repeat: false, height: 150),
         Center(
           child: Text(
             AppString.SIGN_UP.toUpperCase(),

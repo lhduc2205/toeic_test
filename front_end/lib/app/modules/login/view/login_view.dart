@@ -71,7 +71,7 @@ class LoginView extends StatelessWidget {
       ),
       width: double.infinity,
       child: Lottie.asset(
-        LottiePath.SECURITY,
+        LottiePath.security,
         repeat: false,
         height: 150,
       ),

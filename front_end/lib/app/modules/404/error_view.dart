@@ -20,7 +20,7 @@ class ErrorView extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: Lottie.asset(LottiePath.ERROR_404),
+        child: Lottie.asset(LottiePath.error404),
       ),
     );
   }

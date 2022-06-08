@@ -47,7 +47,7 @@ class OnBoardView extends StatelessWidget {
       top: 0,
       left: 0,
       child: Image.asset(
-        ImageRasterPath.BUBBLE,
+        ImageRasterPath.bubble,
         width: 80,
       ),
     );
