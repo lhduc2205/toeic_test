@@ -23,7 +23,7 @@ class _SubmitButton extends StatelessWidget {
             context.read<RegistrationCubit>().registerFormSubmitted();
           },
           child: Text(
-            AppString.SUBMIT,
+            AppString.submit,
             style: buttonTextStyle(),
           ),
         );

@@ -53,7 +53,7 @@ class RegistrationView extends StatelessWidget {
         Lottie.asset(LottiePath.registration, repeat: false, height: 150),
         Center(
           child: Text(
-            AppString.SIGN_UP.toUpperCase(),
+            AppString.signUp.toUpperCase(),
             style: titleTextStyle(color: AppColor.white),
           ),
         ),

@@ -13,7 +13,7 @@ class ErrorView extends StatelessWidget {
       appBar: customAppBar(
         context,
         title: const Text(
-          AppString.PAGE_NOT_FOUND,
+          AppString.pageNotFound,
           style: TextStyle(
             color: AppColor.primary
           ),

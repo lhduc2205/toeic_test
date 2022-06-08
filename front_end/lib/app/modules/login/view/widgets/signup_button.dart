@@ -8,7 +8,7 @@ class _SignupButton extends StatelessWidget {
     return TextButton(
       onPressed: () => Navigator.of(context).pushNamed('/registration'),
       child: const Text(
-        AppString.SIGN_UP,
+        AppString.signUp,
         style: TextStyle(color: AppColor.primary, fontWeight: FontWeight.bold),
       ),
     );

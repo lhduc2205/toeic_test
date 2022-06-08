@@ -55,7 +55,7 @@ class LoginView extends StatelessWidget {
       width: double.infinity,
       child: Center(
         child: Text(
-          AppString.LOGIN,
+          AppString.login,
           style: titleTextStyle(
             color: AppColor.white,
           ),
@@ -118,7 +118,7 @@ class _LoginForm extends StatelessWidget {
             const SizedBox(height: 40),
             _LoginButton(formKey: _formKey),
             const SizedBox(height: 50),
-            const HorizonDivider(text: AppString.LOGIN_WITH_GOOGLE),
+            const HorizonDivider(text: AppString.loginWithGoogle),
             const SizedBox(height: AppStyle.defaultSpacing),
             const _GoogleLoginButton(),
             const SizedBox(height: AppStyle.defaultSpacing),
@@ -133,7 +133,7 @@ class _LoginForm extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: const [
-        Text(AppString.DONT_HAVE_ACCOUNT),
+        Text(AppString.dontHaveAccount),
         _SignupButton(),
       ],
     );
