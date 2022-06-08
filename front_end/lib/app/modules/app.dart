@@ -1,3 +1,4 @@
+import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,10 +52,12 @@ class AppView extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppTheme.basic(context),
       debugShowCheckedModeBanner: false,
-
+      // home: FlowBuilder<AppStatus>(
+      //   state: context.select((AppBloc bloc) => bloc.state.status),
+      //   onGeneratePages: onGenerateAppViewPages,
+      // ),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
-

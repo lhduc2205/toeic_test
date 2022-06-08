@@ -3,41 +3,39 @@ part of registration_cubit;
 enum RegistrationStatus { initial, submitting, success, error }
 
 class RegistrationState extends Equatable {
-  final String email;
-  final String password;
-  final String passwordCheck;
-  final RegistrationStatus status;
 
   const RegistrationState({
-    required this.email,
-    required this.password,
-    required this.status,
-    required this.passwordCheck,
+    this.email = const Email.pure(),
+    this.password = const Password.pure(),
+    this.confirmedPassword = const ConfirmedPassword.pure(),
+    this.status = FormzStatus.pure,
+    this.errorMessage,
   });
 
-  factory RegistrationState.initial() {
-    return const RegistrationState(
-      email: '',
-      password: '',
-      passwordCheck: '',
-      status: RegistrationStatus.initial,
-    );
-  }
+
+  final Email email;
+  final Password password;
+  final ConfirmedPassword confirmedPassword;
+  final FormzStatus status;
+  final String? errorMessage;
+
 
   @override
-  List<Object?> get props => [email, password, passwordCheck, status];
+  List<Object?> get props => [email, password, confirmedPassword, status];
 
   RegistrationState copyWith({
-    String? email,
-    String? password,
-    String? passwordCheck,
-    RegistrationStatus? status,
+    Email? email,
+    Password? password,
+    ConfirmedPassword? confirmedPassword,
+    FormzStatus? status,
+    String? errorMessage,
   }) {
     return RegistrationState(
       email: email ?? this.email,
       password: password ?? this.password,
-      passwordCheck: passwordCheck ?? this.passwordCheck,
+      confirmedPassword: confirmedPassword ?? this.confirmedPassword,
       status: status ?? this.status,
+      errorMessage: errorMessage ?? this.errorMessage
     );
   }
 }

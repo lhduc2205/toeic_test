@@ -3,6 +3,7 @@ library login_view;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:formz/formz.dart';
 import 'package:front_end/app/core/value/constants/app_constants.dart';
 import 'package:front_end/app/core/value/theme/theme.dart';
 import 'package:front_end/app/data/repository/auth_repository.dart';
@@ -100,30 +101,36 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if(state.status == LoginStatus.error) {
-
+        if (state.status == LoginStatus.error) {
+          if (state.status.isSubmissionFailure) {
+            ScaffoldMessenger.of(context)
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text(state.errorMessage ?? 'Authentication Failure'),
+                ),
+              );
+          }
         }
       },
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            const SizedBox(height: AppStyle.defaultSpacing),
-            _EmailInput(),
-            const SizedBox(height: 10),
-            const _PasswordInput(),
-            const SizedBox(height: AppStyle.defaultSpacing),
-            const _ForgotPassword(),
-            const SizedBox(height: 40),
-            _LoginButton(formKey: _formKey),
-            const SizedBox(height: 50),
-            const HorizonDivider(text: AppString.loginWithGoogle),
-            const SizedBox(height: AppStyle.defaultSpacing),
-            const _GoogleLoginButton(),
-            const SizedBox(height: AppStyle.defaultSpacing),
-            _signUpRow(),
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const SizedBox(height: AppStyle.defaultSpacing),
+          _EmailInput(),
+          const SizedBox(height: 10),
+          const _PasswordInput(),
+          const SizedBox(height: AppStyle.defaultSpacing),
+          const _ForgotPassword(),
+          const SizedBox(height: 40),
+          _LoginButton(formKey: _formKey),
+          const SizedBox(height: 50),
+          const HorizonDivider(text: AppString.loginWithGoogle),
+          const SizedBox(height: AppStyle.defaultSpacing),
+          const _GoogleLoginButton(),
+          const SizedBox(height: AppStyle.defaultSpacing),
+          _signUpRow(),
+        ],
       ),
     );
   }

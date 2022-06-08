@@ -9,8 +9,10 @@ class _PasswordInput extends StatelessWidget {
       buildWhen: (previous, current) => previous.password != current.password,
       builder: (context, state) {
         return CustomInputField(
+          key: const Key('signUpForm_passwordInput_textField'),
           obscureText: true,
           hintText: 'Password',
+          errorText: state.password.invalid ? 'week password' : null,
           suffixIcon: IconlyLight.lock,
           onChanged: (password) {
             context.read<RegistrationCubit>().passwordChanged(password);

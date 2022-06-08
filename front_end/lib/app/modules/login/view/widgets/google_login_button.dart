@@ -6,7 +6,8 @@ class _GoogleLoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultButton(
-      onPressed: () {},
+      key: const Key('loginForm_googleLogin_defaultButton'),
+      onPressed: () => context.read<LoginCubit>().logInWithGoogle(),
       primaryColor: AppColor.normalText,
       borderColor: AppColor.normalText,
       isOutlinedButton: true,
