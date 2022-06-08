@@ -5,8 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Http\Requests\StoreExamineeRequest;
 use App\Http\Requests\UpdateExamineeRequest;
+use App\Http\Resources\UserResource;
+use App\Repositories\UserRepository;
 
-class ExamineeController extends Controller
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,6 +21,8 @@ class ExamineeController extends Controller
     public function index()
     {
         //
+        $users = User::get();
+        return UserResource::collection($users);
     }
 
     /**
@@ -34,9 +41,17 @@ class ExamineeController extends Controller
      * @param  \App\Http\Requests\StoreExamineeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreExamineeRequest $request)
+    public function store(Request $request, UserRepository $repository)
     {
         //
+        $payload = $request->only([
+            'email',
+            'password',
+            'is_admin'
+        ]);
+
+        $created = $repository->create($payload);
+        return new UserResource($created);
     }
 
     /**
@@ -45,9 +60,10 @@ class ExamineeController extends Controller
      * @param  \App\Models\Examinee  $examinee
      * @return \Illuminate\Http\Response
      */
-    public function show(User $examinee)
+    public function show(User $user)
     {
         //
+        return new UserResource($user);
     }
 
     /**
@@ -68,9 +84,19 @@ class ExamineeController extends Controller
      * @param  \App\Models\Examinee  $examinee
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateExamineeRequest $request, User $examinee)
+    public function update(Request $request, User $user, UserRepository $repository)
     {
         //
+        $payload = $request->only([
+            "name",
+            "gender",
+            "birthdate",
+            "password"
+        ]);
+        $updated = $repository->update($user, $payload);
+        if (!$updated)
+            return new \Exception("loi r cha");
+        return new UserResource($updated);
     }
 
     /**
@@ -79,8 +105,12 @@ class ExamineeController extends Controller
      * @param  \App\Models\Examinee  $examinee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $examinee)
+    public function destroy(User $user, UserRepository $repository)
     {
         //
+        $deleted = $repository->forceDelete($user);
+        if (!$deleted)
+            return new \Exception("loi r cha");
+        return new UserResource($deleted);
     }
 }

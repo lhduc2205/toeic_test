@@ -7,16 +7,25 @@ use App\Repositories\UserRepository;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
+use App\Models\User;
 
 class AuthController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    }
 
     public function user()
     {
-        return Auth::user();
+        $users = User::get();
+        return new Response([
+            'id' => Auth::user()
+        ]);
     }
 
     public function register(Request $request, UserRepository $repository)
@@ -35,19 +44,23 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $isLogin = false;
-        if (!Auth::attempt($request->only(['email', 'password']))) {
+        $token = Auth::attempt($request->only(['email', 'password']));
+        if (!$token) {
             return new Response([
                 "message" => 'invalid credentails!'
             ], HttpFoundationResponse::HTTP_UNAUTHORIZED);
         }
         $user = Auth::user();
-        $token = $user->createToken("token")->plainTextToken;
-        $cookie = cookie('jwt', $token, 60 * 24); //1 day token
         $response = Response(["message" => $token], HttpFoundationResponse::HTTP_ACCEPTED);
-        return $response->withCookie($cookie);
+        return $response;
     }
 
     public function logout()
     {
+        Auth::logout();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Successfully logged out',
+        ]);
     }
 }
