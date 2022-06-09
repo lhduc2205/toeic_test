@@ -12,7 +12,7 @@ class _PasswordInput extends StatelessWidget {
           key: const Key('signUpForm_passwordInput_textField'),
           obscureText: true,
           hintText: 'Password',
-          errorText: state.password.invalid ? 'week password' : null,
+          errorText: state.password.invalid ? AppErrorString.shortPassword : null,
           suffixIcon: IconlyLight.lock,
           onChanged: (password) {
             context.read<RegistrationCubit>().passwordChanged(password);

@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:front_end/app/data/repository/auth_repository.dart';
+import 'package:front_end/app/network/auth_network.dart';
 
 import '../../data/models/email.dart';
 import '../../data/models/password.dart';
@@ -35,22 +36,41 @@ class LoginCubit extends Cubit<LoginState> {
     );
   }
 
+  // Future<void> logInWithCredentials() async {
+  //   if (!state.status.isValidated) return;
+  //   emit(state.copyWith(status: FormzStatus.submissionInProgress));
+  //   try {
+  //     await _authRepository.logInWithEmailAndPassword(
+  //       email: state.email.value,
+  //       password: state.password.value,
+  //     );
+  //     emit(state.copyWith(status: FormzStatus.submissionSuccess));
+  //   }
+  //   on LogInWithEmailAndPasswordFailure catch (e) {
+  //     emit(
+  //       state.copyWith(
+  //         errorMessage: e.message,
+  //         status: FormzStatus.submissionFailure,
+  //       ),
+  //     );
+  //   } catch (_) {
+  //     emit(state.copyWith(status: FormzStatus.submissionFailure));
+  //   }
+  // }
+
   Future<void> logInWithCredentials() async {
     if (!state.status.isValidated) return;
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
     try {
-      await _authRepository.logInWithEmailAndPassword(
-        email: state.email.value,
-        password: state.password.value,
+      final tokenResponse = await AuthNetwork.logIn(
+        state.email.value,
+        state.password.value,
       );
-      emit(state.copyWith(status: FormzStatus.submissionSuccess));
-    } on LogInWithEmailAndPasswordFailure catch (e) {
-      emit(
-        state.copyWith(
-          errorMessage: e.message,
-          status: FormzStatus.submissionFailure,
-        ),
-      );
+      Map<String, dynamic> tokenJson = tokenResponse.data;
+
+      final profileResponse = await AuthNetwork.getUser(tokenJson['token']);
+      print(profileResponse.data);
+
     } catch (_) {
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
@@ -70,4 +90,5 @@ class LoginCubit extends Cubit<LoginState> {
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
   }
+
 }
