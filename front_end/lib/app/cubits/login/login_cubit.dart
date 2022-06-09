@@ -40,7 +40,7 @@ class LoginCubit extends Cubit<LoginState> {
   //   if (!state.status.isValidated) return;
   //   emit(state.copyWith(status: FormzStatus.submissionInProgress));
   //   try {
-  //     await _authRepository.logInWithEmailAndPassword(
+  //     bool isLoginSuccess = _authRepository.logInWithEmailAndPassword(
   //       email: state.email.value,
   //       password: state.password.value,
   //     );
@@ -58,21 +58,41 @@ class LoginCubit extends Cubit<LoginState> {
   //   }
   // }
 
+  // Future<void> logInWithCredentials() async {
+  //   if (!state.status.isValidated) return;
+  //   emit(state.copyWith(status: FormzStatus.submissionInProgress));
+  //   try {
+  //     final tokenResponse = await AuthNetwork.logIn(
+  //       state.email.value,
+  //       state.password.value,
+  //     );
+  //     Map<String, dynamic> tokenJson = tokenResponse.data;
+  //
+  //     final profileResponse = await AuthNetwork.getUser(tokenJson['token']);
+  //     print(profileResponse.data);
+  //
+  //   } catch (_) {
+  //     emit(state.copyWith(status: FormzStatus.submissionFailure));
+  //   }
+  // }
+
   Future<void> logInWithCredentials() async {
     if (!state.status.isValidated) return;
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
-    try {
-      final tokenResponse = await AuthNetwork.logIn(
-        state.email.value,
-        state.password.value,
+    await Future.delayed(const Duration(seconds: 2));
+    bool isLoginSuccess = _authRepository.logInWithEmailAndPassword(
+      email: state.email.value,
+      password: state.password.value,
+    );
+    if (isLoginSuccess) {
+      emit(state.copyWith(status: FormzStatus.submissionSuccess));
+    } else {
+      emit(
+        state.copyWith(
+          errorMessage: 'Sai tai khoan hoac mat khau',
+          status: FormzStatus.submissionFailure,
+        ),
       );
-      Map<String, dynamic> tokenJson = tokenResponse.data;
-
-      final profileResponse = await AuthNetwork.getUser(tokenJson['token']);
-      print(profileResponse.data);
-
-    } catch (_) {
-      emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
   }
 
@@ -82,13 +102,14 @@ class LoginCubit extends Cubit<LoginState> {
       await _authRepository.logInWithGoogle();
       emit(state.copyWith(status: FormzStatus.submissionSuccess));
     } on LogInWithGoogleFailure catch (e) {
-      state.copyWith(
-        errorMessage: e.message,
-        status: FormzStatus.submissionFailure,
+      emit(
+        state.copyWith(
+          errorMessage: e.message,
+          status: FormzStatus.submissionFailure,
+        ),
       );
     } catch (_) {
       emit(state.copyWith(status: FormzStatus.submissionFailure));
     }
   }
-
 }

@@ -166,19 +166,30 @@ class AuthRepository {
     }
   }
 
-  Future<void> logInWithEmailAndPassword({
+  // Future<void> logInWithEmailAndPassword({
+  //   required String email,
+  //   required String password,
+  // }) async {
+  //   try {
+  //     await _firebaseAuth.signInWithEmailAndPassword(
+  //       email: email,
+  //       password: password,
+  //     );
+  //   } on firebase_auth.FirebaseAuthException catch (e) {
+  //     throw LogInWithEmailAndPasswordFailure.fromCode(e.code);
+  //   } catch (_) {
+  //     throw const LogInWithEmailAndPasswordFailure();
+  //   }
+  // }
+  bool logInWithEmailAndPassword({
     required String email,
     required String password,
-  }) async {
-    try {
-      await _firebaseAuth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-    } on firebase_auth.FirebaseAuthException catch (e) {
-      throw LogInWithEmailAndPasswordFailure.fromCode(e.code);
-    } catch (_) {
-      throw const LogInWithEmailAndPasswordFailure();
+  }) {
+    print(email + ' ' + password);
+    if(email == 'admin@admin' && password == 'password123') {
+      return true;
+    } else {
+      return false;
     }
   }
 

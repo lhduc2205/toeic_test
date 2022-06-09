@@ -18,6 +18,7 @@ class AppColor {
   static const sonicSilver = Color(0xFF757575);
   static const white = Colors.white;
   static const black = Color(0xFF202124);
+  static const red = Color(0xFFE33E5A);
 
   static const normalText = Color(0xFF949DAD);
 

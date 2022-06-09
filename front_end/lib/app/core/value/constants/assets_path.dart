@@ -21,6 +21,7 @@ class ImageRasterPath {
   static const googleLogo = '$_folderPath/google-logo.png';
   static const introductionBg = '$_folderPath/introduction_bg.png';
   static const bubble = '$_folderPath/bubble.png';
+  static const findAnswer = '$_folderPath/find_answer.png';
 }
 
 class ImageVectorPath {
