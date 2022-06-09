@@ -1,7 +1,6 @@
 part of login_view;
 
 class _EmailInput extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginCubit, LoginState>(
@@ -14,9 +13,7 @@ class _EmailInput extends StatelessWidget {
           hintText: 'Email',
           errorText: state.email.invalid ? AppErrorString.invalidEmail : null,
           onChanged: (email) {
-            context.read<LoginCubit>().emailChanged(
-                  email,
-                );
+            context.read<LoginCubit>().emailChanged(email);
           },
         );
       },

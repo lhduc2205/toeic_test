@@ -14,7 +14,7 @@ class _ConfirmedPasswordInput extends StatelessWidget {
           obscureText: true,
           hintText: 'Repeat password',
           errorText: state.confirmedPassword.invalid
-              ? 'passwords do not match'
+              ? AppErrorString.dontMatchPassword
               : null,
           suffixIcon: IconlyLight.lock,
           onChanged: (password) {
