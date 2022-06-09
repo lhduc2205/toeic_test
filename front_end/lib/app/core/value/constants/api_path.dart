@@ -5,12 +5,9 @@ class ApiPath {
   static const String port = '4000';
   static const String prefix = 'api';
 
+  static const String baseUrl = 'https://$ipAddress/$prefix';
 
-  static const String base1 = '$ipAddress:$port';
-  static const String base2 = 'http://$ipAddress:$port';
-  static const String baseUrl = 'http://$ipAddress:$port/$prefix';
-
-  static const String loginAPI = '$baseUrl/user/login';
+  static const String loginAPI = '$baseUrl/login';
 
 
 }

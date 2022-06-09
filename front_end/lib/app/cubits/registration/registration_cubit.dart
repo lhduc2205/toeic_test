@@ -56,6 +56,7 @@ class RegistrationCubit extends Cubit<RegistrationState> {
     );
     emit(
       state.copyWith(
+        password: state.password,
         confirmedPassword: confirmedPassword,
         status: Formz.validate([
           state.email,

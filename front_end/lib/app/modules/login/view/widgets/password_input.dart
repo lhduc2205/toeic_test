@@ -13,7 +13,7 @@ class _PasswordInput extends StatelessWidget {
           obscureText: true,
           suffixIcon: IconlyLight.hide,
           hintText: 'Password',
-          errorText: state.password.invalid ? 'invalid password' : null,
+          errorText: state.password.invalid ? AppErrorString.shortPassword : null,
           fillColor: AppColor.inputFill,
           onChanged: (password) {
             context.read<LoginCubit>().passwordChanged(

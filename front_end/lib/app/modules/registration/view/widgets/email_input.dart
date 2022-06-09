@@ -10,8 +10,8 @@ class _EmailInput extends StatelessWidget {
       builder: (context, state) {
         return CustomInputField(
           key: const Key('signUpForm_emailInput_textField'),
-          hintText: 'Username',
-          errorText: state.email.invalid ? 'invalid email' : null,
+          hintText: 'Email',
+          errorText: state.email.invalid ? AppErrorString.invalidEmail : null,
           suffixIcon: IconlyLight.message,
           onChanged: (email) {
             context.read<RegistrationCubit>().emailChanged(email);

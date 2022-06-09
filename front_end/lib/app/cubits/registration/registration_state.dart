@@ -3,7 +3,6 @@ part of registration_cubit;
 enum RegistrationStatus { initial, submitting, success, error }
 
 class RegistrationState extends Equatable {
-
   const RegistrationState({
     this.email = const Email.pure(),
     this.password = const Password.pure(),
@@ -12,13 +11,11 @@ class RegistrationState extends Equatable {
     this.errorMessage,
   });
 
-
   final Email email;
   final Password password;
   final ConfirmedPassword confirmedPassword;
   final FormzStatus status;
   final String? errorMessage;
-
 
   @override
   List<Object?> get props => [email, password, confirmedPassword, status];
@@ -35,7 +32,7 @@ class RegistrationState extends Equatable {
       password: password ?? this.password,
       confirmedPassword: confirmedPassword ?? this.confirmedPassword,
       status: status ?? this.status,
-      errorMessage: errorMessage ?? this.errorMessage
+      errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 }

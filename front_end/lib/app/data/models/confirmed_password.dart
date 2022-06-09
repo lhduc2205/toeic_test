@@ -1,22 +1,20 @@
 import 'package:formz/formz.dart';
 
-enum PasswordValidatorError { invalid }
+enum PasswordValidatorError { match }
 
 class ConfirmedPassword extends FormzInput<String, PasswordValidatorError> {
-  const ConfirmedPassword.pure() : super.pure('');
+  const ConfirmedPassword.pure() : password = '', super.pure('');
 
   const ConfirmedPassword.dirty({
-    String password = '',
+    this.password = '',
     String value = '',
   }) : super.dirty(value);
 
-  static final _passwordRegExp =
-      RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+  final String? password;
+
 
   @override
   PasswordValidatorError? validator(String? value) {
-    return _passwordRegExp.hasMatch(value ?? '')
-        ? null
-        : PasswordValidatorError.invalid;
+    return password != value ? PasswordValidatorError.match : null;
   }
 }
