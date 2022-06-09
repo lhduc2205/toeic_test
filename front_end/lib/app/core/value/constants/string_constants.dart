@@ -20,7 +20,7 @@ class AppErrorString {
   static final RegExp emailValidatorRegExp =
       RegExp(r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+');
   static const String usernameRequired = 'Username is required';
-  static const String invalidUsername = 'Invalid username address';
+  static const String invalidEmail = 'Invalid email';
   static const String passwordRequired = 'Password is required';
   static const String shortPassword =
       'Password must be at least 6 characters';
