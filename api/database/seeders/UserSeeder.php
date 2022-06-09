@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             "gender" => true,
             "birthdate" => "2000/05/05",
             "email" => "admin@admin",
-            "password" => Hash::make("admin"),
+            "password" => Hash::make("admin12345"),
             "is_admin" => true
         ]);
         User::factory(4)->create();

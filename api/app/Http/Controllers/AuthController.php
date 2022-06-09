@@ -51,7 +51,7 @@ class AuthController extends Controller
             ], HttpFoundationResponse::HTTP_UNAUTHORIZED);
         }
         $user = Auth::user();
-        $response = Response(["message" => $token], HttpFoundationResponse::HTTP_ACCEPTED);
+        $response = Response(["token" => $token], HttpFoundationResponse::HTTP_ACCEPTED);
         return $response;
     }
 

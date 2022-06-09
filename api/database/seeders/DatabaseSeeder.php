@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Feedback;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -22,5 +23,12 @@ class DatabaseSeeder extends Seeder
         // ]);
         // $this->call(AccountSeeder::class);
         $this->call(UserSeeder::class);
+        \App\Models\Exam::factory()->create([
+            'title' => "toeic",
+            'desc' => "test listening and reading skill",
+            'time_limit' => 30,
+            'question_amount' => 24
+        ]);
+        $this->call(FeedbackSeeder::class);
     }
 }
