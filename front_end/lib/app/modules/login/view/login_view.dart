@@ -11,6 +11,7 @@ import 'package:front_end/app/shared_widgets/horizon_divider.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../shared_widgets/custom_input_field.dart';
+import '../../../shared_widgets/custom_text_button.dart';
 import '../../../shared_widgets/default_button.dart';
 import '../../../shared_widgets/default_gradient_container.dart';
 import '../../../shared_widgets/rounded_container.dart';
@@ -93,7 +94,9 @@ class LoginView extends StatelessWidget {
 }
 
 class _LoginForm extends StatelessWidget {
-  _LoginForm({Key? key}) : super(key: key);
+  _LoginForm({
+    Key? key,
+  }) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
 
@@ -101,16 +104,11 @@ class _LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<LoginCubit, LoginState>(
       listener: (context, state) {
-        if (state.status == LoginStatus.error) {
-          if (state.status.isSubmissionFailure) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(
-                SnackBar(
-                  content: Text(state.errorMessage ?? 'Authentication Failure'),
-                ),
-              );
-          }
+        if (state.status.isSubmissionFailure) {
+          _showMyDialog(context);
+        } else if (state.status.isSubmissionSuccess) {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('/home', (route) => false);
         }
       },
       child: Column(
@@ -142,6 +140,39 @@ class _LoginForm extends StatelessWidget {
         Text(AppString.dontHaveAccount),
         _SignupButton(),
       ],
+    );
+  }
+
+
+  Future<void> _showMyDialog(BuildContext context) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            'Login Failed',
+            style: titleTextStyle(color: AppColor.red),
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text(
+                  'Your email or password is incorrect.\nPlease check and try again! ',
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            CustomTextButton(
+              child: const Text('Try again'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
