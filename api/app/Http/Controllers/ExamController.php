@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\exam;
+use App\Http\Resources\ExamResource;
+use App\Http\Resources\UserResource;
+use App\Models\Exam;
+use App\Repositories\ExamRepository;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as HttpFoundationResponse;
 
 class ExamController extends Controller
 {
@@ -15,6 +21,8 @@ class ExamController extends Controller
     public function index()
     {
         //
+        $exams = Exam::get();
+        return ExamResource::collection($exams);
     }
 
     /**
@@ -33,20 +41,32 @@ class ExamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ExamRepository $repository)
     {
         //
+        $payload = $request->only([
+            "title",
+            "topic",
+            "desc",
+            "time_limit",
+            "question_amount"
+        ]);
+        $created = $repository->create($payload);
+        if (!$created)
+            return new \Exception("Loi r cha", HttpFoundationResponse::HTTP_BAD_REQUEST);
+        return new ExamResource($created);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\exam  $exam
+     * @param  \App\Models\Exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function show(exam $exam)
+    public function show(Exam $exam)
     {
         //
+        return new ExamResource($exam);
     }
 
     /**
@@ -67,19 +87,33 @@ class ExamController extends Controller
      * @param  \App\Models\exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, exam $exam)
+    public function update(Request $request, exam $exam, ExamRepository $repository)
     {
         //
+        $payload = $request->only([
+            "title",
+            "topic",
+            "desc",
+            "time_limit",
+            "question_amount"
+        ]);
+        $updated = $repository->update($exam, $payload);
+        if (!$updated)
+            return new \Exception("Loi r cha", HttpFoundationResponse::HTTP_BAD_REQUEST);
+        return new ExamResource($updated);
     }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\exam  $exam
+     * @param  \App\Models\Exam  $exam
      * @return \Illuminate\Http\Response
      */
-    public function destroy(exam $exam)
+    public function destroy(Exam $exam, ExamRepository $repository)
     {
         //
+        $deleted = $repository->forceDelete($exam);
+        if (!$deleted)
+            return new \Exception("Loi r cha", HttpFoundationResponse::HTTP_FORBIDDEN);
+        return new ExamResource($deleted);
     }
 }

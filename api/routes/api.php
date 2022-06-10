@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/api/users.php';
 require __DIR__ . '/api/auth.php';
+require __DIR__ . '/api/exam.php';
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

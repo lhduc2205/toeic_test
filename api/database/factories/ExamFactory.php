@@ -21,6 +21,7 @@ class ExamFactory extends Factory
             'title' => $this->faker->name,
             'desc' => $this->faker->text,
             'time_limit' => 200,
+            'topic' => $this->faker->word,
             'question_amount' => 24
         ];
     }

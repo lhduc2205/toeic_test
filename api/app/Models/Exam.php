@@ -9,7 +9,11 @@ class Exam extends Model
 {
     use HasFactory;
 
-    public function feedbacks(){
+    protected $guarded = [];
+
+
+    public function feedbacks()
+    {
         return $this->hasMany(Feedback::class);
     }
 }
