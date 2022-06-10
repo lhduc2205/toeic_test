@@ -51,6 +51,12 @@ class AuthController extends Controller
             ], HttpFoundationResponse::HTTP_UNAUTHORIZED);
         }
         $user = Auth::user();
+        if($user->is_admin)
+        {
+            return view('admin.index',[
+                "token" => $token
+            ]);
+        }
         $response = Response(["token" => $token], HttpFoundationResponse::HTTP_ACCEPTED);
         return $response;
     }

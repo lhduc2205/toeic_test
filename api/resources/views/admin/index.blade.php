@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>sidebar</title>
-  <link href="css/style.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- <script src="./tailwind3.js"></script> -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap"
     rel="stylesheet">
@@ -28,30 +28,34 @@
       <hr class="my-2 text-gray-600">
 
       <div>
-        <div class="p-2.5 mt-3 flex items-center rounded-md 
+        <!-- <div class="p-2.5 mt-3 flex items-center rounded-md 
         px-4 duration-300 cursor-pointer  bg-gray-700">
           <i class="bi bi-search text-sm"></i>
           <input class="text-[15px] ml-4 w-full bg-transparent focus:outline-none" placeholder="Serach" />
-        </div>
+        </div> -->
 
         <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-blue-600">
           <i class="bi bi-house-door-fill"></i>
           <span class="text-[15px] ml-4 text-gray-200">Home</span>
         </div>
-        <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-blue-600">
+        <!-- <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-blue-600">
           <i class="bi bi-bookmark-fill"></i>
           <span class="text-[15px] ml-4 text-gray-200">Bookmark</span>
-        </div>
+        </div> -->
         <hr class="my-4 text-gray-600">
         <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-blue-600">
-          <i class="bi bi-envelope-fill"></i>
-          <span class="text-[15px] ml-4 text-gray-200">Messages</span>
+        <i class="bi bi-layout-text-window-reverse"></i>
+          <span class="text-[15px] ml-4 text-gray-200">Exams</span>
         </div>
 
         <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-blue-600">
+        <i class="bi bi-person-bounding-box"></i>
+          <span class="text-[15px] ml-4 text-gray-200">Users</span>
+        </div>
+        <div class="p-2.5 mt-2 flex items-center rounded-md px-4 duration-300 cursor-pointer  hover:bg-blue-600">
           <i class="bi bi-chat-left-text-fill"></i>
           <div class="flex justify-between w-full items-center" onclick="dropDown()">
-            <span class="text-[15px] ml-4 text-gray-200">Chatbox</span>
+            <span class="text-[15px] ml-4 text-gray-200">Users Management</span>
             <span class="text-sm rotate-180" id="arrow">
               <i class="bi bi-chevron-down"></i>
             </span>
