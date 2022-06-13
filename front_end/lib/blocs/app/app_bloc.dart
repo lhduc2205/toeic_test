@@ -44,9 +44,10 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
   void _onLogoutRequested(
     AppLogoutRequested event,
-    Emitter<AppState> emmit,
+    Emitter<AppState> emit,
   ) {
-    unawaited(_authRepository.logOut());
+    // unawaited(_authRepository.logOut());
+    emit(const AppState.unauthenticated());
   }
 
   @override

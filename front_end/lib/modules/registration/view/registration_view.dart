@@ -99,7 +99,7 @@ class _SignUpForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: AppStyle.defaultSpacing),
+          const SizedBox(height: 10),
           const _EmailInput(),
           const SizedBox(height: 10),
           const _PasswordInput(),

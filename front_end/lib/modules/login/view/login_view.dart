@@ -108,21 +108,21 @@ class _LoginForm extends StatelessWidget {
           _showMyDialog(context);
         } else if (state.status.isSubmissionSuccess) {
           Navigator.of(context)
-              .pushNamedAndRemoveUntil('/home', (route) => false);
+              .pushNamedAndRemoveUntil('/root', (route) => false);
         }
       },
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: AppStyle.defaultSpacing),
+          const SizedBox(height: 10),
           _EmailInput(),
           const SizedBox(height: 10),
           const _PasswordInput(),
           const SizedBox(height: AppStyle.defaultSpacing),
           const _ForgotPassword(),
-          const SizedBox(height: 40),
+          const SizedBox(height: 30),
           _LoginButton(formKey: _formKey),
-          const SizedBox(height: 50),
+          const SizedBox(height: 20),
           const HorizonDivider(text: AppString.loginWithGoogle),
           const SizedBox(height: AppStyle.defaultSpacing),
           const _GoogleLoginButton(),

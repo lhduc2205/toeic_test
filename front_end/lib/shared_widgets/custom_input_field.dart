@@ -13,7 +13,7 @@ class CustomInputField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Function(String)? onChanged;
   final Color? fillColor;
-  final VoidCallback? onTap;
+  final VoidCallback? onTapSuffixIcon;
   final TextEditingController? controller;
   final TextInputType? keyboardType;
 
@@ -30,7 +30,7 @@ class CustomInputField extends StatelessWidget {
     this.validator,
     this.onChanged,
     this.fillColor,
-    this.onTap,
+    this.onTapSuffixIcon,
     this.controller,
     this.keyboardType,
   }) : super(key: key);
@@ -54,7 +54,7 @@ class CustomInputField extends StatelessWidget {
           color: AppColor.normalText,
         ),
         suffixIcon: GestureDetector(
-          onTap: onTap,
+          onTap: onTapSuffixIcon,
           child: Icon(suffixIcon, color: AppColor.normalText),
         ),
         fillColor: AppColor.inputFill,

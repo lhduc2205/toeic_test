@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/modules/login/view/login_view.dart';
 import 'package:front_end/modules/on_board/view/on_board_view.dart';
+import 'package:front_end/modules/root/view/root_view.dart';
 
 import '../modules/404/error_view.dart';
 import '../modules/home/view/home_view.dart';
@@ -14,8 +15,8 @@ class RouteGenerator {
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const OnBoardView());
-      case '/home':
-        return MaterialPageRoute(builder: (_) => const HomeView());
+      case '/root':
+        return MaterialPageRoute(builder: (_) => const RootView());
       case '/login':
         return MaterialPageRoute(builder: (_) => const LoginView());
       case '/registration':
