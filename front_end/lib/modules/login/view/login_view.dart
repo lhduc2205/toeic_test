@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:formz/formz.dart';
-import 'package:front_end/app/core/value/constants/app_constants.dart';
-import 'package:front_end/app/core/value/theme/theme.dart';
-import 'package:front_end/app/data/repository/auth_repository.dart';
-import 'package:front_end/app/shared_widgets/horizon_divider.dart';
+import 'package:front_end/core/value/constants/app_constants.dart';
+import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/data/repository/auth_repository.dart';
+import 'package:front_end/shared_widgets/horizon_divider.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../shared_widgets/custom_input_field.dart';

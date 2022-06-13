@@ -3,8 +3,8 @@ library login_bloc;
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
-import 'package:front_end/app/data/repository/auth_repository.dart';
-import 'package:front_end/app/network/auth_network.dart';
+import 'package:front_end/data/repository/auth_repository.dart';
+import 'package:front_end/network/auth_network.dart';
 
 import '../../data/models/email.dart';
 import '../../data/models/password.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/app/core/value/constants/app_constants.dart';
+import 'package:front_end/core/value/constants/app_constants.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../shared_widgets/custom_appbar.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/app/core/value/constants/app_constants.dart';
+import 'package:front_end/core/value/constants/app_constants.dart';
 
 AppBar customAppBar(BuildContext context,
     {Widget? title, IconData? backIcon, Function()? onTap}) {

@@ -7,8 +7,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:front_end/app/data/repository/auth_repository.dart';
-import 'package:front_end/app/modules/app.dart';
+import 'package:front_end/data/repository/auth_repository.dart';
+import 'package:front_end/modules/app.dart';
 
 import 'package:front_end/main.dart';
 

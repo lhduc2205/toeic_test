@@ -1,10 +1,10 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:front_end/app/core/value/constants/app_constants.dart';
-import 'package:front_end/app/core/value/theme/theme.dart';
-import 'package:front_end/app/shared_widgets/default_card.dart';
-import 'package:front_end/app/shared_widgets/default_gradient_container.dart';
+import 'package:front_end/core/value/constants/app_constants.dart';
+import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/shared_widgets/default_card.dart';
+import 'package:front_end/shared_widgets/default_gradient_container.dart';
 
 import '../../../shared_widgets/default_button.dart';
 import '../../../shared_widgets/rounded_container.dart';
