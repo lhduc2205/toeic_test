@@ -11,11 +11,11 @@ import '../shared_widgets/custom_page_route.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
+    var args = settings.arguments;
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => const OnBoardView());
+        return MaterialPageRoute(builder: (_) => const RootView());
       case '/root':
         return MaterialPageRoute(builder: (_) => const RootView());
       case '/login':
@@ -26,7 +26,10 @@ class RouteGenerator {
           direction: AxisDirection.up,
         );
       case '/detail':
-        return MaterialPageRoute(builder: (_) => const DetailView());
+        args as DetailViewData;
+        return MaterialPageRoute(
+          builder: (_) => DetailView(tag: args.tag, imagePath: args.image),
+        );
       default:
         return MaterialPageRoute(builder: (_) => const ErrorView());
     }

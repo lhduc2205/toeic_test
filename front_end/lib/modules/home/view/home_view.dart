@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
 import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/modules/detail/view/detail_view.dart';
 import 'package:front_end/shared_widgets/default_card.dart';
 import 'package:front_end/shared_widgets/default_gradient_container.dart';
 import 'package:front_end/shared_widgets/screen_title.dart';
@@ -52,8 +53,36 @@ class HomeView extends StatelessWidget {
                             subtitle: Text('asd asdafv asdda ....'),
                             trailing: Text('Test'),
                             onTap: () {
-                              Navigator.pushNamed(context, '/detail');
+                              Navigator.pushNamed(
+                                context,
+                                DetailView.routeName,
+                                arguments: DetailViewData(
+                                  tag: 'test-image',
+                                  image: ImageRasterPath.festival,
+                                ),
+                              );
                             },
+                          ),
+                          ListTile(
+                            title: Text('Daily activity'),
+                            leading: CircleAvatar(
+                              backgroundColor: AppColor.primary,
+                            ),
+                            subtitle: Text('asd asdafv asdda ....'),
+                          ),
+                          ListTile(
+                            title: Text('Daily activity'),
+                            leading: CircleAvatar(
+                              backgroundColor: AppColor.primary,
+                            ),
+                            subtitle: Text('asd asdafv asdda ....'),
+                          ),
+                          ListTile(
+                            title: Text('Daily activity'),
+                            leading: CircleAvatar(
+                              backgroundColor: AppColor.primary,
+                            ),
+                            subtitle: Text('asd asdafv asdda ....'),
                           ),
                           ListTile(
                             title: Text('Daily activity'),
