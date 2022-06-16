@@ -22,6 +22,8 @@ class ImageRasterPath {
   static const introductionBg = '$_folderPath/introduction_bg.png';
   static const bubble = '$_folderPath/bubble.png';
   static const findAnswer = '$_folderPath/find_answer.png';
+  static const animals = '$_folderPath/animals.png';
+  static const festival = '$_folderPath/festival.png';
 }
 
 class ImageVectorPath {

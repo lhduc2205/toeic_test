@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/modules/detail/view/detail_view.dart';
 import 'package:front_end/modules/login/view/login_view.dart';
 import 'package:front_end/modules/on_board/view/on_board_view.dart';
 import 'package:front_end/modules/root/view/root_view.dart';
@@ -24,6 +25,8 @@ class RouteGenerator {
           child: const RegistrationView(),
           direction: AxisDirection.up,
         );
+      case '/detail':
+        return MaterialPageRoute(builder: (_) => const DetailView());
       default:
         return MaterialPageRoute(builder: (_) => const ErrorView());
     }

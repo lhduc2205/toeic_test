@@ -7,6 +7,7 @@ import 'package:front_end/core/value/constants/app_constants.dart';
 import 'package:front_end/core/value/theme/theme.dart';
 import 'package:front_end/shared_widgets/default_card.dart';
 import 'package:front_end/shared_widgets/default_gradient_container.dart';
+import 'package:front_end/shared_widgets/screen_title.dart';
 
 import '../../../shared_widgets/default_button.dart';
 import '../../../shared_widgets/rounded_container.dart';
@@ -29,15 +30,54 @@ class HomeView extends StatelessWidget {
                 child: Container(
                   color: AppColor.white,
                   child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const _HotTopicCard(),
-                        Container(
-                          height: 500,
-                          color: Colors.red,
-                        )
-                      ],
+                    child: Material(
+                      color: Colors.transparent,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const ScreenTitle(title: 'Quiz'),
+                          const _HotTopicCard(),
+                          const SizedBox(height: 10),
+                          ListTile(
+                            title: Text('Daily activity'),
+                            leading: Hero(
+                              tag: 'test-image',
+                              child: CircleAvatar(
+                                backgroundColor: AppColor.primary,
+                                backgroundImage: AssetImage(
+                                  ImageRasterPath.festival,
+                                ),
+                              ),
+                            ),
+                            subtitle: Text('asd asdafv asdda ....'),
+                            trailing: Text('Test'),
+                            onTap: () {
+                              Navigator.pushNamed(context, '/detail');
+                            },
+                          ),
+                          ListTile(
+                            title: Text('Daily activity'),
+                            leading: CircleAvatar(
+                              backgroundColor: AppColor.primary,
+                            ),
+                            subtitle: Text('asd asdafv asdda ....'),
+                          ),
+                          ListTile(
+                            title: Text('Daily activity'),
+                            leading: CircleAvatar(
+                              backgroundColor: AppColor.primary,
+                            ),
+                            subtitle: Text('asd asdafv asdda ....'),
+                          ),
+                          ListTile(
+                            title: Text('Daily activity'),
+                            leading: CircleAvatar(
+                              backgroundColor: AppColor.primary,
+                            ),
+                            subtitle: Text('asd asdafv asdda ....'),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
