@@ -78,3 +78,13 @@ class DefaultButton extends StatelessWidget {
     }
   }
 }
+
+class _DefaultButtonWithOutlined extends StatelessWidget {
+  const _DefaultButtonWithOutlined({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+

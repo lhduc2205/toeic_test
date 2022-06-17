@@ -1,16 +1,18 @@
 part of home_view;
 
 class _HotTopicCard extends StatelessWidget {
-  const _HotTopicCard({Key? key}) : super(key: key);
+  const _HotTopicCard({Key? key, required this.exam}) : super(key: key);
+
+  final ExamModel exam;
 
   @override
   Widget build(BuildContext context) {
     return DefaultCard(
       height: 150,
-      image: ImageRasterPath.animals,
-      onTap: () {},
+      image: exam.image,
       header: _buildHeader(),
       body: _buildBody(),
+      onTap: () {},
     );
   }
 
@@ -27,7 +29,7 @@ class _HotTopicCard extends StatelessWidget {
           ),
         ),
         Text(
-          'Animal world',
+          exam.title,
           style: titleTextStyle(
             color: AppColor.white,
             fontSize: 30,
@@ -55,14 +57,14 @@ class _HotTopicCard extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Icon(
-              IconlyLight.star,
+            const FaIcon(
+              FontAwesomeIcons.tag,
               color: AppColor.white,
-              size: 20,
+              size: 18,
             ),
             const SizedBox(width: 5),
             Text(
-              'Animal',
+              exam.tag!,
               style: subTextStyle(color: AppColor.white),
             )
           ],
@@ -78,7 +80,7 @@ class _HotTopicCard extends StatelessWidget {
             ),
             const SizedBox(width: 5),
             Text(
-              '45 min',
+              '${exam.time} min',
               style: subTextStyle(color: AppColor.white),
             )
           ],

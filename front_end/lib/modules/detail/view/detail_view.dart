@@ -33,39 +33,37 @@ class DetailView extends StatelessWidget {
           splashRadius: 20,
         ),
       ),
-      body: Container(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ClipRRect(
-                child: Hero(
-                  // tag: 'test-image',
-                  tag: tag,
-                  child: Image.asset(
-                    // ImageRasterPath.festival,
-                    imagePath,
-                    height: 300,
-                    fit: BoxFit.cover,
-                    alignment: Alignment.topCenter,
-                  ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ClipRRect(
+              child: Hero(
+                // tag: 'test-image',
+                tag: tag,
+                child: Image.asset(
+                  // ImageRasterPath.festival,
+                  imagePath,
+                  height: 300,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
                 ),
               ),
-              Container(
-                height: 300,
-                child: HeartIconButton(),
-              ),
-              Container(
-                height: 300,
-                color: AppColor.white,
-              ),
-              Container(
-                height: 300,
-                color: AppColor.white,
-              ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 300,
+              child: HeartIconButton(),
+            ),
+            Container(
+              height: 300,
+              color: AppColor.white,
+            ),
+            Container(
+              height: 300,
+              color: AppColor.white,
+            ),
+          ],
         ),
       ),
     );

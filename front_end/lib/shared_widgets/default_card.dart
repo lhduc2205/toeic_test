@@ -24,6 +24,7 @@ class DefaultCard extends StatelessWidget {
   final String? image;
   final Function()? onTap;
 
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(

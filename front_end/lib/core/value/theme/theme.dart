@@ -13,8 +13,7 @@ class AppTheme {
         // primaryColorLight: const Color.fromRGBO(159, 84, 252, 1),
         // brightness: Brightness.light,
         // primarySwatch: Colors.indigo,
-        textTheme:
-            GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme).apply(
+        textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme).apply(
           bodyColor: AppColor.black,
         ),
         iconTheme: const IconThemeData(color: AppColor.normalText),
@@ -52,10 +51,10 @@ TextStyle subTextStyle({Color? color}) {
   );
 }
 
-TextStyle normalTextStyle({Color? color, FontWeight? fontWeight}) {
+TextStyle normalTextStyle({Color? color, FontWeight? fontWeight, double? fontSize}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: 16,
+      fontSize: fontSize ?? 16,
       color: color ?? AppColor.normalText,
       fontWeight: fontWeight ?? FontWeight.normal,
     ),

@@ -8,24 +8,32 @@ class RoundedContainer extends StatelessWidget {
     required this.child,
     this.padding,
     this.radius,
+    this.color,
   }) : super(key: key);
 
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final double? radius;
+  final Color? color;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: padding ?? const EdgeInsets.all(AppStyle.defaultSpacing),
-      decoration: BoxDecoration(
-        color: AppColor.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(radius ?? 40),
-          topRight: Radius.circular(radius ?? 40),
-        ),
+    return ClipRRect(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(radius ?? 40),
+        topRight: Radius.circular(radius ?? 40),
       ),
-      child: child,
+      child: Container(
+        padding: padding ?? const EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: color ?? AppColor.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(radius ?? 40),
+            topRight: Radius.circular(radius ?? 40),
+          ),
+        ),
+        child: child,
+      ),
     );
   }
 }
