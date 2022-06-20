@@ -17,7 +17,7 @@ class ScreenTitle extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         _Animation(
-          child: Text('Hi, $title', style: normalTextStyle(fontSize: 20)),
+          child: Text('Hi, $title', style: normalTextStyle(fontSize: 20, color: AppColor.black)),
         ),
         _Animation(
           child: ClipRRect(

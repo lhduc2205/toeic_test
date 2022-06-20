@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:front_end/blocs/app/app_bloc.dart';
-import 'package:front_end/modules/on_board/view/on_board_view.dart';
-import 'package:front_end/modules/registration/view/registration_view.dart';
 import 'package:front_end/config/route_generator.dart';
 
 import '../core/value/theme/theme.dart';
@@ -21,7 +19,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _setTransparentStatusBar();
+    // _setTransparentStatusBar();
 
     return RepositoryProvider.value(
       value: _authRepository,

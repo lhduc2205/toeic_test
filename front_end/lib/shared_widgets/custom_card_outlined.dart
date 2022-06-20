@@ -10,16 +10,20 @@ class CustomCardOutlined extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
-      child: Container(
-        // padding: const EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
-            color: Colors.grey[300]!,
+      child: Card(
+        elevation: 2,
+        child: Container(
+          // padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.grey[200]!,
+              width: 0.5,
+            ),
+            // borderRadius: BorderRadius.circular(10),
           ),
-          borderRadius: BorderRadius.circular(10),
+          child: child,
         ),
-        child: child,
       ),
     );
   }
