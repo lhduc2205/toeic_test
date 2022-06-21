@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
-import 'package:front_end/shared_widgets/heart_icon_button.dart';
+import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/data/models/exam_model.dart';
+import 'package:front_end/shared_widgets/button/heart_icon_button.dart';
 
 class DetailView extends StatelessWidget {
   const DetailView({
     Key? key,
-    required this.tag,
-    required this.imagePath,
+    required this.exam,
   }) : super(key: key);
 
   static const routeName = '/detail';
-  final String tag;
-  final String imagePath;
+  final ExamModel exam;
 
   @override
   Widget build(BuildContext context) {
@@ -40,17 +40,17 @@ class DetailView extends StatelessWidget {
           children: [
             ClipRRect(
               child: Hero(
-                // tag: 'test-image',
-                tag: tag,
+                tag: exam.tag.toString(),
                 child: Image.asset(
                   // ImageRasterPath.festival,
-                  imagePath,
+                  exam.image,
                   height: 300,
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter,
                 ),
               ),
             ),
+            Text(exam.title, style: titleTextStyle(),),
             SizedBox(
               height: 300,
               child: HeartIconButton(),
@@ -68,11 +68,4 @@ class DetailView extends StatelessWidget {
       ),
     );
   }
-}
-
-class DetailViewData {
-  DetailViewData({required this.tag, required this.image});
-
-  final String tag;
-  final String image;
 }

@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import '../core/value/constants/app_constants.dart';
 
 class DefaultCard extends StatelessWidget {
-  const DefaultCard(
-      {Key? key,
-      required this.header,
-      required this.body,
-      this.radius,
-      this.padding,
-      this.gradient,
-      this.height,
-      this.onTap,
-      this.image})
-      : super(key: key);
+  const DefaultCard({
+    Key? key,
+    required this.header,
+    required this.body,
+    this.radius,
+    this.padding,
+    this.gradient,
+    this.height,
+    this.width,
+    this.onTap,
+    this.image,
+  }) : super(key: key);
 
   final Widget header;
   final Widget body;
@@ -21,9 +22,9 @@ class DefaultCard extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Gradient? gradient;
   final double? height;
+  final double? width;
   final String? image;
   final Function()? onTap;
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +55,7 @@ class DefaultCard extends StatelessWidget {
                 children: [
                   Container(
                     height: height ?? 160,
+                    width: width ?? 300,
                     decoration: BoxDecoration(
                       gradient: gradient ?? AppColor.primaryGradientColor,
                     ),
@@ -103,9 +105,9 @@ class DefaultCard extends StatelessWidget {
           horizontal: AppStyle.defaultSpacing,
         ),
         decoration: image != null
-            ? const BoxDecoration(
+            ? BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(ImageRasterPath.animals),
+                  image: AssetImage(image ?? ImageRasterPath.animals),
                   fit: BoxFit.cover,
                   opacity: 0.15,
                 ),

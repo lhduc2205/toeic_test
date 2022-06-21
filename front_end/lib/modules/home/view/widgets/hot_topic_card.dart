@@ -1,18 +1,26 @@
 part of home_view;
 
 class _HotTopicCard extends StatelessWidget {
-  const _HotTopicCard({Key? key, required this.exam}) : super(key: key);
+  const _HotTopicCard({
+    Key? key,
+    required this.exam,
+    this.onTap,
+    this.gradient,
+  }) : super(key: key);
 
   final ExamModel exam;
+  final Function()? onTap;
+  final Gradient? gradient;
 
   @override
   Widget build(BuildContext context) {
     return DefaultCard(
       height: 150,
       image: exam.image,
+      gradient: gradient,
       header: _buildHeader(),
       body: _buildBody(),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 
@@ -89,5 +97,3 @@ class _HotTopicCard extends StatelessWidget {
     );
   }
 }
-
-

@@ -14,7 +14,7 @@ class _ExamItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(5.0),
         ),
         color: Colors.white,
-        elevation: 2,
+        elevation: 5,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(5.0),
           child: InkWell(
@@ -23,10 +23,7 @@ class _ExamItem extends StatelessWidget {
               Navigator.pushNamed(
                 context,
                 DetailView.routeName,
-                arguments: DetailViewData(
-                  tag: exam.tag.toString(),
-                  image: exam.image,
-                ),
+                arguments: exam,
               );
             },
             child: _CardBody(exam: exam),

@@ -80,6 +80,13 @@ TextStyle normalTextStyle({Color? color, FontWeight? fontWeight, double? fontSiz
   );
 }
 
+TextStyle get appTextStyle => GoogleFonts.montserrat(
+      textStyle: const TextStyle(
+        fontSize: AppStyle.titleAppSize,
+        fontWeight: FontWeight.bold,
+      ),
+    );
+
 TextStyle buttonTextStyle({
   Color? color,
   FontWeight? fontWeight,

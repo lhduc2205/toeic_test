@@ -2,21 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
 
 class CustomInputField extends StatelessWidget {
-  final String? hintText;
-  final String? label;
-  final IconData? suffixIcon;
-  final String? suffixText;
-  final String? prefixText;
-  final String? errorText;
-  final IconData? prefixIcon;
-  final bool? obscureText;
-  final String? Function(String?)? validator;
-  final Function(String)? onChanged;
-  final Color? fillColor;
-  final VoidCallback? onTapSuffixIcon;
-  final TextEditingController? controller;
-  final TextInputType? keyboardType;
-
   const CustomInputField({
     Key? key,
     this.hintText,
@@ -29,11 +14,34 @@ class CustomInputField extends StatelessWidget {
     this.prefixIcon,
     this.validator,
     this.onChanged,
+    this.onTap,
     this.fillColor,
+    this.suffixIconColor,
     this.onTapSuffixIcon,
     this.controller,
     this.keyboardType,
+    this.readOnly,
+    this.enabled,
   }) : super(key: key);
+
+  final String? hintText;
+  final String? label;
+  final IconData? suffixIcon;
+  final String? suffixText;
+  final String? prefixText;
+  final String? errorText;
+  final IconData? prefixIcon;
+  final bool? obscureText;
+  final String? Function(String?)? validator;
+  final Function(String)? onChanged;
+  final Function()? onTap;
+  final Color? fillColor;
+  final Color? suffixIconColor;
+  final VoidCallback? onTapSuffixIcon;
+  final TextEditingController? controller;
+  final TextInputType? keyboardType;
+  final bool? readOnly;
+  final bool? enabled;
 
   @override
   Widget build(BuildContext context) {
@@ -55,34 +63,37 @@ class CustomInputField extends StatelessWidget {
         ),
         suffixIcon: GestureDetector(
           onTap: onTapSuffixIcon,
-          child: Icon(suffixIcon, color: AppColor.normalText),
+          child: Icon(suffixIcon, color: suffixIconColor ?? AppColor.normalText),
         ),
         fillColor: AppColor.inputFill,
         filled: true,
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            AppStyle.defaultBorderRadius,
-          ),
-          borderSide: BorderSide.none,
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(
-            AppStyle.defaultBorderRadius,
-          ),
+        enabledBorder: getInputBorder(),
+        border: getInputBorder(
           borderSide: BorderSide(color: fillColor ?? AppColor.primary),
         ),
-        focusedBorder: OutlineInputBorder(
+        focusedBorder: getInputBorder(
           borderSide: const BorderSide(
             color: AppColor.primary,
           ),
-          borderRadius: BorderRadius.circular(
-            AppStyle.defaultBorderRadius,
-          ),
         ),
+        disabledBorder: getInputBorder(),
         contentPadding: const EdgeInsets.all(15),
       ),
       validator: validator,
       onChanged: onChanged,
+      onTap: onTap,
+      // showCursor: false,
+      readOnly: readOnly ?? false,
+      enabled: enabled ?? true,
+    );
+  }
+
+  InputBorder getInputBorder({BorderSide? borderSide}) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(
+        AppStyle.defaultBorderRadius,
+      ),
+      borderSide: borderSide ?? BorderSide.none,
     );
   }
 }

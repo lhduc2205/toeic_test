@@ -3,13 +3,16 @@ library app_constants;
 import 'package:flutter/material.dart';
 
 part 'api_path.dart';
+
 part 'assets_path.dart';
+
 part 'string_constants.dart';
 
 class AppStyle {
   static const defaultBorderRadius = 15.0;
   static const defaultSpacing = 20.0;
-  static const titleListSize = 22.0;
+  static const titleListSize = 18.0;
+  static const titleAppSize = 25.0;
 }
 
 class AppColor {
@@ -32,11 +35,38 @@ class AppColor {
   static const inputFill = Color(0xFFF4F7FF);
   static const subTextWhite = Color(0xFFF1F1F1);
 
-  static const primaryGradientColor =
-  LinearGradient(begin: Alignment.topLeft, end: Alignment.center, colors: [
-    Color(0xFF0067FF),
-    Color(0xFF008FFD),
-  ]);
+  static const primaryGradientColor = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.center,
+    colors: [
+      Color(0xFF0067FF),
+      Color(0xFF008FFD),
+    ],
+  );
+
+  static const orangeGradientColor = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.center,
+    colors: [
+      Color(0xFFee6c4d),
+      Color(0xFFF15412),
+    ],
+  );
+
+  static const blackGradientColor = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.center,
+    colors: [
+      Color(0xFF51557E),
+      Color(0xFF51557E),
+    ],
+  );
+
+
+  static const logoAppGradient = LinearGradient(
+    colors: [
+      Color(0xFF0067FF),
+      Color(0xFFec008c),
+    ],
+  );
 }
-
-

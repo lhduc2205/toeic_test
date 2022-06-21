@@ -3,8 +3,8 @@ import 'package:front_end/core/value/theme/theme.dart';
 
 import '../../core/value/constants/app_constants.dart';
 
-class AppTitle extends StatelessWidget {
-  const AppTitle({
+class AppLabel extends StatelessWidget {
+  const AppLabel({
     Key? key,
     required this.text,
     this.color,
@@ -19,7 +19,7 @@ class AppTitle extends StatelessWidget {
       text,
       style: titleTextStyle(
         color: color ?? AppColor.black,
-        fontSize: AppStyle.titleAppSize,
+        fontSize: AppStyle.titleListSize,
       ),
     );
   }

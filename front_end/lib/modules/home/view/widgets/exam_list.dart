@@ -49,7 +49,7 @@ class _ExamListState extends State<ExamList> {
   Widget build(BuildContext context) {
     return AnimatedList(
       key: _listKey,
-      initialItemCount: widget.exams.length - 2,
+      initialItemCount: widget.exams.length - 3,
       shrinkWrap: true,
       primary: false,
       itemBuilder: (context, index, animation) {

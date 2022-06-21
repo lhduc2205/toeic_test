@@ -1,18 +1,27 @@
 library home_view;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
 import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/modules/detail/view/detail_view.dart';
 import 'package:front_end/modules/home/view/widgets/exam_list.dart';
+import 'package:front_end/modules/profile/view/profile_view.dart';
+import 'package:front_end/shared_widgets/button/custom_text_button.dart';
 import 'package:front_end/shared_widgets/default_card.dart';
-import 'package:front_end/shared_widgets/screen_title.dart';
+import 'package:front_end/shared_widgets/portforlio/portfolio_layout.dart';
+import 'package:front_end/shared_widgets/rounded_avatar.dart';
 
+import '../../../cubits/bottom_navbar/bottom_navbar_cubit.dart';
 import '../../../data/models/exam_model.dart';
-import '../../../shared_widgets/text/app_title.dart';
+import '../../../shared_widgets/animation/opacity_animation.dart';
+import '../../../shared_widgets/text/gradient_text.dart';
 
 part 'widgets/hot_topic_card.dart';
+
+part 'widgets/app_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -21,41 +30,73 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(
-        children: [
-          const SizedBox(height: 30),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 10,
-                  horizontal: AppStyle.defaultSpacing,
-                ),
-                height: MediaQuery.of(context).size.height,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const ScreenTitle(title: 'Duc'),
-                    const SizedBox(height: 20),
-                    const _Label(text: 'Trending', icon: FontAwesomeIcons.fire, color: AppColor.orange),
-                    const SizedBox(height: 10),
-                    _HotTopicCard(
-                      exam: ExamModel(
-                        image: ImageRasterPath.animals,
-                        tag: 'animal',
-                        description: 'asdasd',
-                        title: 'Animal world',
-                        time: 45,
-                      ),
+      body: CustomScrollView(
+        slivers: [
+          _buildSliverAppBar(),
+          _buildBody(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSliverAppBar() {
+    return SliverAppBar(
+      backgroundColor: Colors.white.withOpacity(0.95),
+      // centerTitle: true,
+      floating: true,
+      title: const _AppBar(),
+    );
+  }
+
+  Widget _buildBody(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildListDelegate(
+        [
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppStyle.defaultSpacing,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: MediaQuery.of(context).padding.top),
+                PortfolioLayout(
+                  label: 'Popular',
+                  icon: FontAwesomeIcons.fire,
+                  color: AppColor.orange,
+                  portfolio: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: getHotExamList()
+                          .map(
+                            (exam) => _HotTopicCard(
+                              gradient: exam.id == 2 ? AppColor.blackGradientColor : null,
+                              exam: exam,
+                              onTap: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  DetailView.routeName,
+                                  arguments: exam,
+                                );
+                              },
+                            ),
+                          )
+                          .toList(),
                     ),
-                    const SizedBox(height: 30),
-                    const _Label(text: 'Exam list', icon: FontAwesomeIcons.bookBookmark),
-                    const SizedBox(height: 10),
-                    ExamList(exams: getExamList()),
-                  ],
+                  ),
                 ),
-              ),
+                const SizedBox(height: 30),
+                PortfolioLayout(
+                  label: 'Exam list',
+                  icon: FontAwesomeIcons.bookBookmark,
+                  action: CustomTextButton(
+                    child: Text('View all'),
+                    onPressed: () {},
+                  ),
+                  portfolio: ExamList(exams: getExamList()),
+                ),
+              ],
             ),
           ),
         ],
@@ -74,34 +115,39 @@ class HomeView extends StatelessWidget {
       ),
       ExamModel(
         title: 'Job',
+        tag: 'job-1',
+        description: 'Your work or your study": Are you a student or a worker?',
+        image: ImageRasterPath.animals,
+        time: 25,
+      ),
+      ExamModel(
+        title: 'Job',
+        tag: 'job-2',
         description: 'Your work or your study": Are you a student or a worker?',
         image: ImageRasterPath.animals,
         time: 25,
       ),
     ];
   }
-}
 
-class _Label extends StatelessWidget {
-  const _Label({
-    Key? key,
-    required this.text,
-    required this.icon,
-    this.color,
-  }) : super(key: key);
-
-  final String text;
-  final IconData icon;
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        FaIcon(icon, color: color ?? AppColor.black1, size: 20),
-        const SizedBox(width: 10),
-        AppTitle(text: text, color: color ?? AppColor.black1),
-      ],
-    );
+  List<ExamModel> getHotExamList() {
+    return [
+      ExamModel(
+        id: 1,
+        image: ImageRasterPath.animals,
+        tag: 'animal',
+        description: 'asdasd',
+        title: 'Animal world',
+        time: 45,
+      ),
+      ExamModel(
+        id: 2,
+        image: ImageRasterPath.festival,
+        tag: 'festival',
+        description: 'adasdasd',
+        title: 'World festival',
+        time: 120,
+      ),
+    ];
   }
 }

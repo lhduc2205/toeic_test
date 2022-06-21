@@ -9,11 +9,11 @@ import 'package:front_end/core/value/theme/theme.dart';
 import 'package:front_end/cubits/registration/registration_cubit.dart';
 import 'package:front_end/data/repository/auth_repository.dart';
 import 'package:front_end/shared_widgets/custom_input_field.dart';
-import 'package:front_end/shared_widgets/default_button.dart';
+import 'package:front_end/shared_widgets/button/default_button.dart';
 import 'package:front_end/shared_widgets/rounded_container.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../shared_widgets/custom_text_button.dart';
+import '../../../shared_widgets/button/custom_text_button.dart';
 import '../../../shared_widgets/default_gradient_container.dart';
 
 part 'widgets/email_input.dart';

@@ -11,8 +11,8 @@ import 'package:front_end/shared_widgets/horizon_divider.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../shared_widgets/custom_input_field.dart';
-import '../../../shared_widgets/custom_text_button.dart';
-import '../../../shared_widgets/default_button.dart';
+import '../../../shared_widgets/button/custom_text_button.dart';
+import '../../../shared_widgets/button/default_button.dart';
 import '../../../shared_widgets/default_gradient_container.dart';
 import '../../../shared_widgets/rounded_container.dart';
 import '../../../cubits/login/login_cubit.dart';
