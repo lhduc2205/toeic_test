@@ -3,6 +3,7 @@ library home_view;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
 import 'package:front_end/core/value/theme/theme.dart';
@@ -44,6 +45,7 @@ class HomeView extends StatelessWidget {
       backgroundColor: Colors.white.withOpacity(0.95),
       // centerTitle: true,
       floating: true,
+      toolbarHeight: 60.h,
       title: const _AppBar(),
     );
   }
@@ -53,7 +55,7 @@ class HomeView extends StatelessWidget {
       delegate: SliverChildListDelegate(
         [
           Container(
-            padding: const EdgeInsets.symmetric(
+            padding: EdgeInsets.symmetric(
               horizontal: AppStyle.defaultSpacing,
             ),
             child: Column(
@@ -86,12 +88,12 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 30),
+                SizedBox(height: 10.h),
                 PortfolioLayout(
                   label: 'Exam list',
                   icon: FontAwesomeIcons.bookBookmark,
                   action: CustomTextButton(
-                    child: Text('View all'),
+                    child: const Text('View all'),
                     onPressed: () {},
                   ),
                   portfolio: ExamList(exams: getExamList()),
@@ -116,7 +118,8 @@ class HomeView extends StatelessWidget {
       ExamModel(
         title: 'Job',
         tag: 'job-1',
-        description: 'Your work or your study": Are you a student or a worker?',
+        description:
+            'Your work or your study": Are you a student or a worker?asdasdasdasdasdasdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
         image: ImageRasterPath.animals,
         time: 25,
       ),

@@ -15,7 +15,7 @@ class _HotTopicCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultCard(
-      height: 150,
+      height: 150.h,
       image: exam.image,
       gradient: gradient,
       header: _buildHeader(),
@@ -25,36 +25,50 @@ class _HotTopicCard extends StatelessWidget {
   }
 
   Widget _buildHeader() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          'Hot Topic',
-          style: titleTextStyle(
-            color: AppColor.white,
-            fontSize: 16,
-          ),
-        ),
-        Text(
-          exam.title,
-          style: titleTextStyle(
-            color: AppColor.white,
-            fontSize: 30,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Text(
-              'Try now',
-              style: subTextStyle(
-                color: AppColor.white,
+    return Container(
+      padding: EdgeInsets.only(top: 10.h, bottom: 5.h),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Hot Topic',
+                style: normalTextStyle(
+                  color: AppColor.white1,
+                ),
               ),
-            ),
-          ],
-        )
-      ],
+              Text(
+                exam.title,
+                style: titleTextStyle(
+                  color: AppColor.white,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                padding: EdgeInsets.all(5.w),
+                decoration: BoxDecoration(
+                  gradient: gradient ?? AppColor.primaryGradientColor,
+                  border: Border.all(color: AppColor.white, width: 2.sp),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text(
+                  'Try now',
+                  style: subTextStyle(
+                    color: AppColor.white,
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 
@@ -65,12 +79,12 @@ class _HotTopicCard extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const FaIcon(
+            FaIcon(
               FontAwesomeIcons.tag,
               color: AppColor.white,
-              size: 18,
+              size: 16.sp,
             ),
-            const SizedBox(width: 5),
+            SizedBox(width: 5.w),
             Text(
               exam.tag!,
               style: subTextStyle(color: AppColor.white),
@@ -80,13 +94,13 @@ class _HotTopicCard extends StatelessWidget {
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Icon(
+            Icon(
               IconlyLight.timeCircle,
               // color: AppColor.white,
               color: AppColor.white,
-              size: 20,
+              size: 16.sp,
             ),
-            const SizedBox(width: 5),
+            SizedBox(width: 5.w),
             Text(
               '${exam.time} min',
               style: subTextStyle(color: AppColor.white),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RoundedAvatar extends StatelessWidget {
   const RoundedAvatar({
@@ -19,14 +20,14 @@ class RoundedAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(radius ?? 8),
+      borderRadius: BorderRadius.circular(radius ?? 8.sp),
       splashColor: splashColor ?? Colors.white.withOpacity(0.3),
       onTap: onTap,
       child: Ink(
-        width: size ?? 40,
-        height: size ?? 40,
+        width: size ?? 30.w,
+        height: size ?? 30.w,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius ?? 8),
+          borderRadius: BorderRadius.circular(radius ?? 8.sp),
           image: DecorationImage(
             image: AssetImage(image),
             fit: BoxFit.cover,

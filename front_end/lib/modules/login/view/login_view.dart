@@ -3,6 +3,7 @@ library login_view;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
 import 'package:front_end/core/value/theme/theme.dart';
@@ -68,13 +69,13 @@ class LoginView extends StatelessWidget {
 
   Container _buildSecurityLottie() {
     return Container(
-      padding: const EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         horizontal: AppStyle.defaultSpacing,
       ),
       width: double.infinity,
       child: Lottie.asset(
         LottiePath.security,
-        height: 150,
+        height: 150.h,
       ),
     );
   }
@@ -114,19 +115,19 @@ class _LoginForm extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           _EmailInput(),
-          const SizedBox(height: 10),
+          SizedBox(height: 10.h),
           const _PasswordInput(),
-          const SizedBox(height: AppStyle.defaultSpacing),
+          SizedBox(height: AppStyle.defaultSpacing),
           const _ForgotPassword(),
-          const SizedBox(height: 30),
+          SizedBox(height: 30.h),
           _LoginButton(formKey: _formKey),
-          const SizedBox(height: 20),
+          SizedBox(height: 20.h),
           const HorizonDivider(text: AppString.loginWithGoogle),
-          const SizedBox(height: AppStyle.defaultSpacing),
+          SizedBox(height: AppStyle.defaultSpacing),
           const _GoogleLoginButton(),
-          const SizedBox(height: AppStyle.defaultSpacing),
+          SizedBox(height: AppStyle.defaultSpacing),
           _signUpRow(),
         ],
       ),

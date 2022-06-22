@@ -4,9 +4,13 @@ class HeartIconButton extends StatefulWidget {
   HeartIconButton({
     Key? key,
     this.isFav = false,
+    this.splashRadius,
+    this.iconSize,
   }) : super(key: key);
 
   bool isFav;
+  final double? splashRadius;
+  final double? iconSize;
 
   @override
   State<HeartIconButton> createState() => _HeartIconButtonState();
@@ -32,12 +36,12 @@ class _HeartIconButtonState extends State<HeartIconButton>
     _sizeAnimation = TweenSequence(
       <TweenSequenceItem<double>>[
         TweenSequenceItem<double>(
-          tween: Tween<double>(begin: 30, end: 45),
-          weight: 45,
+          tween: Tween<double>(begin: widget.iconSize ?? 20, end: 30),
+          weight: 30,
         ),
         TweenSequenceItem<double>(
-          tween: Tween<double>(begin: 45, end: 30),
-          weight: 45,
+          tween: Tween<double>(begin: 30, end: widget.iconSize ?? 20),
+          weight: 30,
         ),
       ],
     ).animate(_controller);
@@ -73,6 +77,7 @@ class _HeartIconButtonState extends State<HeartIconButton>
             color: _colorAnimation.value,
             size: _sizeAnimation.value,
           ),
+          splashRadius: widget.splashRadius ?? 15,
           onPressed: () {
             widget.isFav ? _controller.reverse() : _controller.forward();
           },

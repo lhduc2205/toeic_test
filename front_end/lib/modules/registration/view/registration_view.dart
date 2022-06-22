@@ -31,7 +31,6 @@ part 'widgets/login_button.dart';
 class RegistrationView extends StatelessWidget {
   const RegistrationView({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -109,7 +108,7 @@ class _SignUpForm extends StatelessWidget {
           const _LicenseText(),
           const SizedBox(height: 40),
           const _SubmitButton(),
-          const SizedBox(height: AppStyle.defaultSpacing),
+          SizedBox(height: AppStyle.defaultSpacing),
           _buildLoginRow(),
         ],
       ),

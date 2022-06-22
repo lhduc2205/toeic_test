@@ -11,14 +11,14 @@ class _ExamItem extends StatelessWidget {
       width: MediaQuery.of(context).size.width * 0.94,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
         ),
         color: Colors.white,
         elevation: 5,
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
           child: InkWell(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
             onTap: () {
               Navigator.pushNamed(
                 context,
@@ -52,11 +52,11 @@ class _CardBody extends StatelessWidget {
 
   Widget _buildLeadingImage(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(5),
+      padding: EdgeInsets.all(5.w),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-          maxWidth: MediaQuery.of(context).size.width * 0.22,
-          maxHeight: MediaQuery.of(context).size.width * 0.22,
+          maxWidth: 100.h,
+          maxHeight: 100.h,
         ),
         child: _ImageHero(tag: exam.tag.toString(), image: exam.image),
       ),
@@ -66,12 +66,13 @@ class _CardBody extends StatelessWidget {
   Widget _buildContent(BuildContext context) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 5.sp, horizontal: 10.sp),
+        height: 110.h,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -79,14 +80,14 @@ class _CardBody extends StatelessWidget {
                     exam.title,
                     style: titleCardStyle(color: AppColor.black),
                   ),
-                  Icon(Icons.favorite_border_outlined, size: 15, color: Colors.grey[400]),
+                  Icon(Icons.favorite_border_outlined, size: 15.sp, color: Colors.grey[400]),
                   // Icon(Icons.favorite, size: 15, color: AppColor.red),
                 ],
               ),
             ),
             const SizedBox(height: 3),
             SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
+              width: MediaQuery.of(context).size.width,
               child: Text(
                 exam.description,
                 // softWrap: false,
@@ -95,7 +96,7 @@ class _CardBody extends StatelessWidget {
                 style: subTitleCardStyle(),
               ),
             ),
-            const SizedBox(height: 7),
+            const Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -140,7 +141,7 @@ class _ImageHero extends StatelessWidget {
             ),
             fit: BoxFit.cover,
           ),
-          borderRadius: BorderRadius.circular(5),
+          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
           border: Border.all(color: Colors.white),
         ),
       ),
@@ -169,13 +170,13 @@ class _SmallTextWithIcon extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: iconSize ?? 13,
+          size: iconSize ?? 13.sp,
           color: primaryColor ?? AppColor.normalText,
         ),
-        const SizedBox(width: 5),
+        SizedBox(width: 5.w),
         Text(
           text,
-          style: normalTextStyle(fontSize: 13, color: primaryColor),
+          style: normalTextStyle(fontSize: 13.sp, color: primaryColor),
         )
       ],
     );

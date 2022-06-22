@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/app_constants.dart';
@@ -11,12 +12,12 @@ class AppTheme {
         // primaryColor: kFontColorPallets[0],
         primaryColor: AppColor.primary,
         // primaryColorLight: const Color.fromRGBO(159, 84, 252, 1),
-        // brightness: Brightness.light,
+        brightness: Brightness.light,
         // primarySwatch: Colors.indigo,
-        textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme).apply(
-          bodyColor: AppColor.black,
-        ),
-        iconTheme: const IconThemeData(color: AppColor.normalText),
+        textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme)
+            .apply(bodyColor: AppColor.black, fontSizeFactor: 1.sp),
+        // textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+        iconTheme: IconThemeData(color: AppColor.normalText, size: 16.sp),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             // primary: const Color.fromRGBO(128, 109, 255, 1),
@@ -35,7 +36,7 @@ class AppTheme {
 TextStyle titleTextStyle({Color? color, double? fontSize}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: fontSize ?? 25,
+      fontSize: fontSize ?? 25.sp,
       color: color ?? AppColor.primary,
       fontWeight: FontWeight.bold,
     ),
@@ -45,7 +46,7 @@ TextStyle titleTextStyle({Color? color, double? fontSize}) {
 TextStyle titleCardStyle({Color? color, double? fontSize}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: fontSize ?? 16,
+      fontSize: fontSize ?? 16.sp,
       color: color ?? AppColor.black,
       fontWeight: FontWeight.bold,
     ),
@@ -55,7 +56,7 @@ TextStyle titleCardStyle({Color? color, double? fontSize}) {
 TextStyle subTitleCardStyle({Color? color, double? fontSize}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: fontSize ?? 13,
+      fontSize: fontSize ?? 12.sp,
       color: color ?? AppColor.normalText,
     ),
   );
@@ -64,7 +65,7 @@ TextStyle subTitleCardStyle({Color? color, double? fontSize}) {
 TextStyle subTextStyle({Color? color}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: 14,
+      fontSize: 12.sp,
       color: color ?? AppColor.normalText,
     ),
   );
@@ -73,7 +74,7 @@ TextStyle subTextStyle({Color? color}) {
 TextStyle normalTextStyle({Color? color, FontWeight? fontWeight, double? fontSize}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: fontSize ?? 16,
+      fontSize: fontSize ?? 14.sp,
       color: color ?? AppColor.normalText,
       fontWeight: fontWeight ?? FontWeight.normal,
     ),
@@ -81,7 +82,7 @@ TextStyle normalTextStyle({Color? color, FontWeight? fontWeight, double? fontSiz
 }
 
 TextStyle get appTextStyle => GoogleFonts.montserrat(
-      textStyle: const TextStyle(
+      textStyle: TextStyle(
         fontSize: AppStyle.titleAppSize,
         fontWeight: FontWeight.bold,
       ),
@@ -94,7 +95,7 @@ TextStyle buttonTextStyle({
 }) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: fontSize ?? 16,
+      fontSize: fontSize ?? 16.sp,
       color: color ?? AppColor.white,
       fontWeight: fontWeight ?? FontWeight.bold,
     ),

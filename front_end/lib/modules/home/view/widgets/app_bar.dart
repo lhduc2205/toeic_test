@@ -34,7 +34,7 @@ class _AppBar extends StatelessWidget {
                       color: AppColor.normalText,
                     ),
                   ),
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   RoundedAvatar(
                     image: ImageRasterPath.festival,
                     onTap: () {

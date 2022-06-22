@@ -2,6 +2,7 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:front_end/blocs/app/app_bloc.dart';
 import 'package:front_end/config/route_generator.dart';
 
@@ -19,7 +20,7 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // _setTransparentStatusBar();
+    _setTransparentStatusBar();
 
     return RepositoryProvider.value(
       value: _authRepository,
@@ -46,16 +47,21 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme.basic(context),
-      debugShowCheckedModeBanner: false,
-      // home: FlowBuilder<AppStatus>(
-      //   state: context.select((AppBloc bloc) => bloc.state.status),
-      //   onGeneratePages: onGenerateAppViewPages,
-      // ),
-      initialRoute: '/',
-      onGenerateRoute: RouteGenerator.generateRoute,
+    return ScreenUtilInit(
+      // designSize: const Size(720, 1280),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (ctx, child) => MaterialApp(
+        title: 'Flutter Demo',
+        theme: AppTheme.basic(context),
+        debugShowCheckedModeBanner: false,
+        // home: FlowBuilder<AppStatus>(
+        //   state: context.select((AppBloc bloc) => bloc.state.status),
+        //   onGeneratePages: onGenerateAppViewPages,
+        // ),
+        initialRoute: '/',
+        onGenerateRoute: RouteGenerator.generateRoute,
+      ),
     );
   }
 }

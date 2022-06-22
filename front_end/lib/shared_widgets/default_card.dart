@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../core/value/constants/app_constants.dart';
 
@@ -54,8 +55,8 @@ class DefaultCard extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
-                    height: height ?? 160,
-                    width: width ?? 300,
+                    height: height ?? 120.sp,
+                    width: width ?? 280.sp,
                     decoration: BoxDecoration(
                       gradient: gradient ?? AppColor.primaryGradientColor,
                     ),
@@ -69,11 +70,11 @@ class DefaultCard extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Positioned(
-                    top: 10,
-                    right: 10,
+                  Positioned(
+                    top: 10.w,
+                    right: 10.w,
                     child: CircleAvatar(
-                      radius: 3,
+                      radius: 3.w,
                       backgroundColor: AppColor.white,
                     ),
                   ),
@@ -101,7 +102,7 @@ class DefaultCard extends StatelessWidget {
   Widget _buildHeader() {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.symmetric(
+        padding: EdgeInsets.symmetric(
           horizontal: AppStyle.defaultSpacing,
         ),
         decoration: image != null
@@ -120,7 +121,7 @@ class DefaultCard extends StatelessWidget {
 
   Widget _buildBody() {
     return Container(
-      padding: const EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         horizontal: AppStyle.defaultSpacing,
         vertical: 10,
       ),
@@ -129,10 +130,10 @@ class DefaultCard extends StatelessWidget {
   }
 
   Widget _buildDivider() {
-    return const Divider(
+    return Divider(
       color: AppColor.white,
-      height: 2,
-      thickness: 0.2,
+      height: 2.w,
+      thickness: 0.2.w,
     );
   }
 }

@@ -1,5 +1,6 @@
 library exam_list;
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:front_end/core/value/theme/theme.dart';
 
@@ -49,7 +50,6 @@ class _ExamListState extends State<ExamList> {
   Widget build(BuildContext context) {
     return AnimatedList(
       key: _listKey,
-      initialItemCount: widget.exams.length - 3,
       shrinkWrap: true,
       primary: false,
       itemBuilder: (context, index, animation) {
