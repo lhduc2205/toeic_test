@@ -27,14 +27,17 @@ class DetailView extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leadingWidth: 50.w,
-        leading: CircleAvatar(
-          backgroundColor: AppColor.white1.withOpacity(0.4),
-          child: IconButton(
-            splashRadius: 20,
-            onPressed: () => Navigator.of(context).pop(),
-            icon: const Icon(
-              FontAwesomeIcons.arrowLeft,
-              color: AppColor.primary,
+        leading: Padding(
+          padding: EdgeInsets.only(left: AppStyle.defaultSpacing),
+          child: CircleAvatar(
+            backgroundColor: Colors.white.withOpacity(0.2),
+            child: IconButton(
+              splashRadius: 20,
+              onPressed: () => Navigator.of(context).pop(),
+              icon: const Icon(
+                FontAwesomeIcons.arrowLeft,
+                color: AppColor.white,
+              ),
             ),
           ),
         ),
@@ -47,7 +50,6 @@ class DetailView extends StatelessWidget {
             child: Container(
               height: 150.h,
               decoration: BoxDecoration(
-                color: const Color(0xff7c94b6),
                 image: DecorationImage(
                   colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.darken),
                   image: AssetImage(exam.image),
@@ -57,21 +59,19 @@ class DetailView extends StatelessWidget {
             ),
           ),
           OpacityAnimation(
+            duration: const Duration(milliseconds: 500),
+            direction: AxisDirection.down,
+            padding: 20.h,
             child: Container(
-              margin: EdgeInsets.only(top: 130.h),
-              padding: EdgeInsets.symmetric(
-                horizontal: AppStyle.defaultSpacing * 2,
-                vertical: AppStyle.defaultSpacing * 1.5,
-              ),
+              margin: EdgeInsets.only(top: 120.h),
+              height: MediaQuery.of(context).size.height - 140.h,
+              padding: getPadding,
               width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 // color: AppColor.white,
-                color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(25),
-                  topRight: Radius.circular(
-                    AppStyle.defaultBorderRadius,
-                  ),
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
                 ),
               ),
               child: Column(
@@ -79,10 +79,11 @@ class DetailView extends StatelessWidget {
                 children: [
                   PortfolioLayout(
                     label: exam.title,
+                    color: AppColor.black,
                     action: HeartIconButton(),
                     portfolio: Text(
                       exam.description,
-                      style: normalTextStyle(color: AppColor.black1),
+                      style: normalTextStyle(color: AppColor.lightGrey),
                     ),
                   ),
                   const SizedBox(
@@ -162,10 +163,15 @@ class DetailView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Spacer(),
-                  DefaultButton(onPressed: () {}, child: const Text('Try now')),
                 ],
               ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: getPadding,
+              child: DefaultButton(onPressed: () {}, child: const Text('Try now')),
             ),
           ),
         ],
@@ -185,6 +191,12 @@ class DetailView extends StatelessWidget {
       )
     ];
   }
+
+  EdgeInsetsGeometry get getPadding => EdgeInsets.symmetric(
+    horizontal: AppStyle.defaultSpacing * 2,
+    vertical: AppStyle.defaultSpacing * 1.5,
+    );
+
 }
 
 class Question {

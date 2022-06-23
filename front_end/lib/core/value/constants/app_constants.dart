@@ -26,6 +26,7 @@ class AppColor {
   static const lavenderBlue = Color(0xFFC4DBFA);
   static const cultured = Color(0xFFF7F7F7);
   static const sonicSilver = Color(0xFF757575);
+  static const lightGrey = Color(0xff7c94b6);
   static const white = Colors.white;
   static const white1 = Color(0xFFF2F2F2);
   static const black = Color(0xFF202124);

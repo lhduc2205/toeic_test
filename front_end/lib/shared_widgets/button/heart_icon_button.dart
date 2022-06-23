@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'custom_icon_button.dart';
+
 class HeartIconButton extends StatefulWidget {
   HeartIconButton({
     Key? key,
@@ -16,8 +18,7 @@ class HeartIconButton extends StatefulWidget {
   State<HeartIconButton> createState() => _HeartIconButtonState();
 }
 
-class _HeartIconButtonState extends State<HeartIconButton>
-    with SingleTickerProviderStateMixin {
+class _HeartIconButtonState extends State<HeartIconButton> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _colorAnimation;
   late Animation<double> _sizeAnimation;
@@ -30,8 +31,7 @@ class _HeartIconButtonState extends State<HeartIconButton>
       duration: const Duration(milliseconds: 300),
     );
 
-    _colorAnimation = ColorTween(begin: Colors.grey[400], end: Colors.red)
-        .animate(_controller);
+    _colorAnimation = ColorTween(begin: Colors.grey[400], end: Colors.red).animate(_controller);
 
     _sizeAnimation = TweenSequence(
       <TweenSequenceItem<double>>[
@@ -71,13 +71,12 @@ class _HeartIconButtonState extends State<HeartIconButton>
     return AnimatedBuilder(
       animation: _controller,
       builder: (BuildContext context, _) {
-        return IconButton(
+        return CustomIconButton(
           icon: Icon(
             Icons.favorite,
             color: _colorAnimation.value,
             size: _sizeAnimation.value,
           ),
-          splashRadius: widget.splashRadius ?? 15,
           onPressed: () {
             widget.isFav ? _controller.reverse() : _controller.forward();
           },
