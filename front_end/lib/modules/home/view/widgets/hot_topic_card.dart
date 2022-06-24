@@ -8,7 +8,7 @@ class _HotTopicCard extends StatelessWidget {
     this.gradient,
   }) : super(key: key);
 
-  final ExamModel exam;
+  final Exam exam;
   final Function()? onTap;
   final Gradient? gradient;
 

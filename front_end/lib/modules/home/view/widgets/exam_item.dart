@@ -3,7 +3,7 @@ part of exam_list;
 class _ExamItem extends StatelessWidget {
   const _ExamItem({Key? key, required this.exam}) : super(key: key);
 
-  final ExamModel exam;
+  final Exam exam;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _ExamItem extends StatelessWidget {
 class _CardBody extends StatelessWidget {
   const _CardBody({Key? key, required this.exam}) : super(key: key);
 
-  final ExamModel exam;
+  final Exam exam;
 
   @override
   Widget build(BuildContext context) {

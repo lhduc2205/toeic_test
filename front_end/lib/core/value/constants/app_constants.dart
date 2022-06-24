@@ -29,7 +29,7 @@ class AppColor {
   static const lightGrey = Color(0xff7c94b6);
   static const white = Colors.white;
   static const white1 = Color(0xFFF2F2F2);
-  static const black = Color(0xFF202124);
+  static const black = Color(0xFF393E46);
   static const black1 = Color(0xFF2D4263);
   static const black2 = Color(0xFF51557E);
   static const red = Color(0xFFE33E5A);

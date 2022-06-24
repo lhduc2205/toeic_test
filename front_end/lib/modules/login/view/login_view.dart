@@ -6,7 +6,7 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
-import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/core/theme/theme.dart';
 import 'package:front_end/data/repository/auth_repository.dart';
 import 'package:front_end/shared_widgets/horizon_divider.dart';
 import 'package:lottie/lottie.dart';

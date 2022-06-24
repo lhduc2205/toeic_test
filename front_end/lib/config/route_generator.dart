@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/data/models/exam_model.dart';
+import 'package:front_end/data/models/exam/exam.dart';
 import 'package:front_end/modules/detail/view/detail_view.dart';
 import 'package:front_end/modules/login/view/login_view.dart';
 import 'package:front_end/modules/on_board/view/on_board_view.dart';
@@ -28,7 +28,7 @@ class RouteGenerator {
           direction: AxisDirection.up,
         );
       case '/detail':
-        args as ExamModel;
+        args as Exam;
         return MaterialPageRoute(
           builder: (_) => DetailView(exam: args),
         );

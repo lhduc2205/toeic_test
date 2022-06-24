@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
-import 'package:front_end/core/value/theme/theme.dart';
-import 'package:front_end/data/models/exam_model.dart';
+import 'package:front_end/core/theme/theme.dart';
+import 'package:front_end/data/models/exam/exam.dart';
+import 'package:front_end/data/models/question/question.dart';
 import 'package:front_end/shared_widgets/animation/opacity_animation.dart';
 import 'package:front_end/shared_widgets/button/default_button.dart';
 import 'package:front_end/shared_widgets/button/heart_icon_button.dart';
-import 'package:front_end/shared_widgets/portforlio/portfolio_layout.dart';
+import 'package:front_end/shared_widgets/portfolio/portfolio_layout.dart';
 
 class DetailView extends StatelessWidget {
   const DetailView({
@@ -16,7 +17,7 @@ class DetailView extends StatelessWidget {
   }) : super(key: key);
 
   static const routeName = '/detail';
-  final ExamModel exam;
+  final Exam exam;
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +84,7 @@ class DetailView extends StatelessWidget {
                     action: HeartIconButton(),
                     portfolio: Text(
                       exam.description,
-                      style: normalTextStyle(color: AppColor.lightGrey),
+                      style: normalTextStyle(),
                     ),
                   ),
                   const SizedBox(
@@ -199,17 +200,4 @@ class DetailView extends StatelessWidget {
 
 }
 
-class Question {
-  Question({required this.question, required this.answer, required this.rightAnswer});
 
-  final String question;
-  final List<Answer> answer;
-  final int rightAnswer;
-}
-
-class Answer {
-  Answer(this.id, {required this.answer});
-
-  final int? id;
-  final String answer;
-}

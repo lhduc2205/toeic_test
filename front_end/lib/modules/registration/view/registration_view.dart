@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:formz/formz.dart';
 import 'package:front_end/core/value/constants/app_constants.dart';
-import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/core/theme/theme.dart';
 import 'package:front_end/cubits/registration/registration_cubit.dart';
 import 'package:front_end/data/repository/auth_repository.dart';
 import 'package:front_end/shared_widgets/custom_input_field.dart';

@@ -3,7 +3,7 @@ library on_board_view;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:front_end/core/value/theme/theme.dart';
+import 'package:front_end/core/theme/theme.dart';
 import 'package:front_end/shared_widgets/default_gradient_container.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:lottie/lottie.dart';
