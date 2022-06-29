@@ -13,6 +13,7 @@ class _HotTopicList extends StatelessWidget {
       color: AppColor.orange,
       portfolio: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
         child: Row(
           children: hotExams
               .map(

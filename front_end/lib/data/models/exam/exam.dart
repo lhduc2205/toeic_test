@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:front_end/data/models/question/question.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -13,6 +15,7 @@ class Exam {
     required this.time,
     // required this.questions,
     this.tag,
+    this.color,
     this.isFavorite = false,
   });
 
@@ -23,6 +26,7 @@ class Exam {
   final int time;
   // final List<Question> questions;
   final String? tag;
+  final Color? color;
   final bool? isFavorite;
 
   factory Exam.fromJson(Map<String, dynamic> json) => _$ExamFromJson(json);

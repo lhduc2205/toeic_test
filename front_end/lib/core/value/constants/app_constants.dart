@@ -23,6 +23,7 @@ class AppColor {
 
   static const primary = Color(0xFF0067FF);
   static const lightBlue = Color(0xFF39A2DB);
+  static const lightBlue2 = Color(0xFF00A4FD);
   static const lavenderBlue = Color(0xFFC4DBFA);
   static const cultured = Color(0xFFF7F7F7);
   static const sonicSilver = Color(0xFF757575);

@@ -6,7 +6,7 @@ import 'package:front_end/blocs/app/app_bloc.dart';
 import 'package:front_end/config/route_generator.dart';
 import 'package:front_end/core/theme/theme.dart';
 import 'package:front_end/data/repository/auth_repository.dart';
-
+import 'package:front_end/data/services/exam_service.dart';
 
 class App extends StatelessWidget {
   const App({
@@ -21,12 +21,19 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     _setTransparentStatusBar();
 
-    return RepositoryProvider.value(
-      value: _authRepository,
-      child: BlocProvider(
-        create: (_) => AppBloc(authRepository: _authRepository),
-        child: const AppView(),
-      ),
+    // RepositoryProvider.value(
+    //   value: _authRepository,
+    //   child: BlocProvider(
+    //     create: (_) => AppBloc(authRepository: _authRepository),
+    //     child: const AppView(),
+    //   ),
+    // ),
+
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(create: (context) => ExamService()),
+      ],
+      child: const AppView(),
     );
   }
 

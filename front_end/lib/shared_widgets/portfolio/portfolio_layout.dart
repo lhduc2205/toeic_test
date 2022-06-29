@@ -12,6 +12,7 @@ class PortfolioLayout extends StatelessWidget {
     this.icon,
     this.color,
     this.action,
+    this.spacingUnderLabel,
   }) : super(key: key);
 
   final String label;
@@ -19,6 +20,7 @@ class PortfolioLayout extends StatelessWidget {
   final IconData? icon;
   final Color? color;
   final Widget? action;
+  final double? spacingUnderLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class PortfolioLayout extends StatelessWidget {
               action ?? Container(),
             ],
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: spacingUnderLabel ?? 5),
           portfolio,
         ],
       ),

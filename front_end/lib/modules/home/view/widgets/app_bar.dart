@@ -35,23 +35,11 @@ class _AppBar extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 10.w),
-                  // BasicShimmer(
-                  //   child: RoundedAvatar(
-                  //     image: ImageRasterPath.festival,
-                  //     onTap: () {
-                  //       context.read<BottomNavbarCubit>().changePage(CurrentPage.profile);
-                  //     },
-                  //   ),
-                  // ),
-                  BasicShimmer(
-                    child: Container(
-                      width: 30.w,
-                      height: 30.w,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.sp),
-                      ),
-                    ),
+                  RoundedAvatar(
+                    image: ImageRasterPath.festival,
+                    onTap: () {
+                      context.read<BottomNavbarCubit>().changePage(CurrentPage.profile);
+                    },
                   ),
                 ],
               ),

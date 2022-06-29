@@ -1,20 +1,7 @@
-library exam_list;
+part of home_view;
 
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:front_end/core/theme/theme.dart';
-import 'package:front_end/shared_widgets/shimmer/basic_shimmer.dart';
-import 'package:shimmer/shimmer.dart';
-
-import '../../../../core/value/constants/app_constants.dart';
-import '../../../../data/models/exam/exam.dart';
-import '../../../detail/view/detail_view.dart';
-
-part 'exam_item.dart';
-
-class ExamList extends StatefulWidget {
-  ExamList({
+class _ExamList extends StatefulWidget {
+  _ExamList({
     Key? key,
     required this.exams,
   }) : super(key: key);
@@ -22,10 +9,10 @@ class ExamList extends StatefulWidget {
   final List<Exam> exams;
 
   @override
-  State<ExamList> createState() => _ExamListState();
+  State<_ExamList> createState() => _ExamListState();
 }
 
-class _ExamListState extends State<ExamList> {
+class _ExamListState extends State<_ExamList> {
   final List<Widget> _examTiles = [];
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
   final Tween<Offset> _offset = Tween(begin: const Offset(1, 0), end: const Offset(0, 0));
@@ -51,24 +38,26 @@ class _ExamListState extends State<ExamList> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedList(
-      key: _listKey,
-      initialItemCount: _examTiles.length,
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      // primary: false,
-      itemBuilder: (context, index, animation) {
-        print('INDEX: $index');
-        return SlideTransition(
-          position: animation.drive(_offset),
-          child: _examTiles[index],
-        );
-      },
+    return PortfolioLayout(label: 'Exams',
+      icon: FontAwesomeIcons.bookBookmark,
+      action: CustomTextButton(
+        child: const Text('View all'),
+        onPressed: () {},
+      ),
+      portfolio: AnimatedList(
+        key: _listKey,
+        initialItemCount: _examTiles.length,
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        // primary: false,
+        itemBuilder: (context, index, animation) {
+          print('INDEX: $index');
+          return SlideTransition(
+            position: animation.drive(_offset),
+            child: _examTiles[index],
+          );
+        },
+      ),
     );
-    // return BasicShimmer(
-    //   child: Column(
-    //     children: widget.exams.map((exam) => _ExamItem(exam: exam)).toList(),
-    //   ),
-    // );
   }
 }

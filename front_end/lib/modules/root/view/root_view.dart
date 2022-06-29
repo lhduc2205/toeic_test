@@ -14,8 +14,10 @@ class RootView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => BottomNavbarCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (BuildContext context) => BottomNavbarCubit()),
+      ],
       child: Scaffold(
         // body: getPage(),
         body: _getPage(),

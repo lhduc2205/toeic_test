@@ -16,11 +16,9 @@ class AppTheme {
         // primarySwatch: Colors.indigo,
         textTheme: GoogleFonts.nunitoSansTextTheme(Theme.of(context).textTheme)
             .apply(bodyColor: AppColor.black, fontSizeFactor: 1.sp),
-        // textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
         iconTheme: IconThemeData(color: AppColor.normalText, size: 16.sp),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            // primary: const Color.fromRGBO(128, 109, 255, 1),
             primary: AppColor.primary,
           ).merge(
             ButtonStyle(
@@ -28,7 +26,7 @@ class AppTheme {
             ),
           ),
         ),
-        // canvasColor: const Color.fromRGBO(31, 29, 44, 1),
+        // canvasColor: AppColor.primary,
         scaffoldBackgroundColor: AppColor.white,
       );
 }

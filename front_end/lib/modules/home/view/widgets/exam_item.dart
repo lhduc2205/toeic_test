@@ -1,4 +1,4 @@
-part of exam_list;
+part of home_view;
 
 class _ExamItem extends StatelessWidget {
   const _ExamItem({Key? key, required this.exam}) : super(key: key);
