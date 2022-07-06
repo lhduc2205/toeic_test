@@ -121,7 +121,7 @@ class _SignUpForm extends StatelessWidget {
       children: [
         Text(
           'Join us before?',
-          style: subTextStyle(
+          style: smallTextStyle(
             color: AppColor.black,
           ),
         ),

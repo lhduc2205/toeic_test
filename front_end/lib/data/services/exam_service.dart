@@ -12,6 +12,7 @@ class ExamService {
         description: 'What are some of the daily activities that you do at home?',
         image: ImageRasterPath.festival,
         time: 45,
+        questionQuantity: 10,
         color: AppColor.primary,
       ),
       Exam(
@@ -21,6 +22,7 @@ class ExamService {
         'Your work or your study": Are you a student or a worker?asdasdasdasdasdasdasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd',
         image: ImageRasterPath.animals,
         time: 25,
+        questionQuantity: 20,
         color: AppColor.orange,
       ),
       Exam(
@@ -29,6 +31,7 @@ class ExamService {
         description: 'Your work or your study": Are you a student or a worker?',
         image: ImageRasterPath.animals,
         time: 25,
+        questionQuantity: 30,
         color: AppColor.red,
       ),
     ];
@@ -44,6 +47,7 @@ class ExamService {
         description: 'asdasd',
         title: 'Animal world',
         time: 45,
+        questionQuantity: 10,
       ),
       Exam(
         id: 2,
@@ -52,6 +56,7 @@ class ExamService {
         description: 'adasdasd',
         title: 'World festival',
         time: 120,
+        questionQuantity: 10,
       ),
     ];
   }

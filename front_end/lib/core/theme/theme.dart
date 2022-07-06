@@ -46,7 +46,7 @@ TextStyle titleCardStyle({Color? color, double? fontSize}) {
     textStyle: TextStyle(
       fontSize: fontSize ?? 16.sp,
       color: color ?? AppColor.black,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.w700,
     ),
   );
 }
@@ -54,13 +54,13 @@ TextStyle titleCardStyle({Color? color, double? fontSize}) {
 TextStyle subTitleCardStyle({Color? color, double? fontSize}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
-      fontSize: fontSize ?? 12.sp,
+      fontSize: fontSize ?? 13.sp,
       color: color ?? AppColor.normalText,
     ),
   );
 }
 
-TextStyle subTextStyle({Color? color}) {
+TextStyle smallTextStyle({Color? color}) {
   return GoogleFonts.nunito(
     textStyle: TextStyle(
       fontSize: 12.sp,

@@ -7,28 +7,16 @@ class _ExamItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width * 0.94,
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
-        ),
-        color: Colors.white,
-        elevation: 5,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
-          child: InkWell(
-            borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                DetailView.routeName,
-                arguments: exam,
-              );
-            },
-            child: _CardBody(exam: exam),
-          ),
-        ),
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
+        side: const BorderSide(color: AppColor.grayBorder),
+      ),
+      color: Colors.white,
+      elevation: 0,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
+        child: _CardBody(exam: exam),
       ),
     );
   }
@@ -41,109 +29,44 @@ class _CardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildLeadingImage(context),
-        _buildContent(context),
-      ],
-    );
-  }
-
-  Widget _buildLeadingImage(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5.w),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxWidth: 100.h,
-          maxHeight: 100.h,
-        ),
-        child: _ImageHero(tag: exam.tag.toString(), image: exam.image),
-      ),
-    );
-  }
-
-  Widget _buildContent(BuildContext context) {
-    return Expanded(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 5.sp, horizontal: 10.sp),
-        height: 110.h,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    exam.title,
-                    style: titleCardStyle(color: AppColor.black),
-                  ),
-                  Icon(Icons.favorite_border_outlined, size: 15.sp, color: Colors.grey[400]),
-                  // Icon(Icons.favorite, size: 15, color: AppColor.red),
-                ],
-              ),
-            ),
-            const SizedBox(height: 3),
-            SizedBox(
-              width: MediaQuery.of(context).size.width,
-              child: Text(
-                exam.description,
-                // softWrap: false,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 2,
-                style: subTitleCardStyle(),
-              ),
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _SmallTextWithIcon(
-                  icon: FontAwesomeIcons.tag,
-                  primaryColor: AppColor.lightBlue,
-                  text: exam.tag ?? 'None',
-                ),
-                _SmallTextWithIcon(
-                  icon: Icons.access_time_outlined,
-                  text: '${exam.time} min',
-                  primaryColor: Colors.orange,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _ImageHero extends StatelessWidget {
-  const _ImageHero({
-    Key? key,
-    required this.tag,
-    required this.image,
-  }) : super(key: key);
-
-  final String tag;
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Hero(
-      tag: tag,
-      child: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              image,
-            ),
-            fit: BoxFit.cover,
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(exam.title, style: titleCardStyle()),
+          const SizedBox(height: 3),
+          Text(
+            exam.description,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            style: subTitleCardStyle(),
           ),
-          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
-          border: Border.all(color: Colors.white),
-        ),
+          const SizedBox(height: 10),
+          _SmallTextWithIcon(
+            icon: Icons.question_mark,
+            text: '${exam.questionQuantity} questions',
+            primaryColor: AppColor.red,
+          ),
+          const SizedBox(height: 2),
+          _SmallTextWithIcon(
+            icon: IconlyLight.timeCircle,
+            text: '${exam.time} min',
+            primaryColor: Colors.green[800],
+          ),
+          const SizedBox(height: 10),
+          Row(children: [DefaultChip(label: '#${exam.tag}', fontSize: 12)]),
+          const Spacer(),
+          DefaultButton(
+            onPressed: () {
+              Navigator.pushNamed(context, DetailView.routeName, arguments: exam);
+            },
+            isOutlinedButton: true,
+            primaryColor: AppColor.primary,
+            borderRadius: 10,
+            child: const Text('Detail', style: TextStyle(fontWeight: FontWeight.w700)),
+          ),
+        ],
       ),
     );
   }
@@ -176,7 +99,7 @@ class _SmallTextWithIcon extends StatelessWidget {
         SizedBox(width: 5.w),
         Text(
           text,
-          style: normalTextStyle(fontSize: 13.sp, color: primaryColor),
+          style: normalTextStyle(fontSize: 13.sp),
         )
       ],
     );

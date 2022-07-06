@@ -7,18 +7,18 @@ class _LicenseText extends StatelessWidget {
   Widget build(BuildContext context) {
     return RichText(
       text: TextSpan(
-        style: subTextStyle(),
+        style: smallTextStyle(),
         children: [
           const TextSpan(
               text: 'By signing up, you\'re agree to our '),
           TextSpan(
             text: 'Term & Conditions ',
-            style: subTextStyle(color: AppColor.primary),
+            style: smallTextStyle(color: AppColor.primary),
           ),
           const TextSpan(text: 'and '),
           TextSpan(
             text: 'Privacy Policy',
-            style: subTextStyle(color: AppColor.primary),
+            style: smallTextStyle(color: AppColor.primary),
           ),
         ],
       ),

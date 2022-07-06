@@ -60,7 +60,7 @@ class _HotTopicCard extends StatelessWidget {
                 ),
                 child: Text(
                   'Try now',
-                  style: subTextStyle(
+                  style: smallTextStyle(
                     color: AppColor.white,
                   ),
                 ),
@@ -87,7 +87,7 @@ class _HotTopicCard extends StatelessWidget {
             SizedBox(width: 5.w),
             Text(
               exam.tag!,
-              style: subTextStyle(color: AppColor.white),
+              style: smallTextStyle(color: AppColor.white),
             )
           ],
         ),
@@ -103,7 +103,7 @@ class _HotTopicCard extends StatelessWidget {
             SizedBox(width: 5.w),
             Text(
               '${exam.time} min',
-              style: subTextStyle(color: AppColor.white),
+              style: smallTextStyle(color: AppColor.white),
             )
           ],
         ),

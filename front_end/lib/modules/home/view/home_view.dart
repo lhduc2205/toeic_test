@@ -15,8 +15,10 @@ import 'package:front_end/modules/detail/view/detail_view.dart';
 import 'package:front_end/shared_widgets/animation/opacity_animation.dart';
 import 'package:front_end/shared_widgets/button/custom_icon_button.dart';
 import 'package:front_end/shared_widgets/button/custom_text_button.dart';
+import 'package:front_end/shared_widgets/button/default_button.dart';
+import 'package:front_end/shared_widgets/chip/default_chip.dart';
 import 'package:front_end/shared_widgets/default_card.dart';
-import 'package:front_end/shared_widgets/colored_choice_chip.dart';
+import 'package:front_end/shared_widgets/chip/colored_choice_chip.dart';
 import 'package:front_end/shared_widgets/portfolio/portfolio_layout.dart';
 import 'package:front_end/shared_widgets/rounded_avatar.dart';
 import 'package:front_end/shared_widgets/shimmer/basic_shimmer.dart';
@@ -53,9 +55,6 @@ class HomeView extends StatelessWidget {
           builder: (context, state) {
             if(state is HomeLoadingState) {
               return const _HomeShimmer();
-            }
-            if(state is HomeLoadedState) {
-              return const _HomeShimmer();
               // return CustomScrollView(
               //   physics: const BouncingScrollPhysics(),
               //   slivers: [
@@ -63,6 +62,16 @@ class HomeView extends StatelessWidget {
               //     _Body(exams: state.exams, hotExams: state.hotExams ?? []),
               //   ],
               // );
+            }
+            if(state is HomeLoadedState) {
+              // return const _HomeShimmer();
+              return CustomScrollView(
+                // physics: const BouncingScrollPhysics(),
+                slivers: [
+                  const _SliverAppBar(),
+                  _Body(exams: state.exams, hotExams: state.hotExams ?? []),
+                ],
+              );
             }
 
             return Container();

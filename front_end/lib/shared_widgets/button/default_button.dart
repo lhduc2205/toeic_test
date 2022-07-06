@@ -12,6 +12,7 @@ class DefaultButton extends StatelessWidget {
   final Color? borderColor;
   final Color? indicatorColor;
   final double? padding;
+  final double? borderRadius;
   final ButtonState buttonState;
 
   const DefaultButton({
@@ -22,6 +23,7 @@ class DefaultButton extends StatelessWidget {
     this.borderColor,
     this.indicatorColor,
     this.padding,
+    this.borderRadius,
     this.isOutlinedButton = false,
     this.buttonState = ButtonState.initial,
   }) : super(key: key);
@@ -37,9 +39,9 @@ class DefaultButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         primary: primaryColor ?? AppColor.primary,
         // padding: EdgeInsets.all(padding ?? 15),
-        minimumSize: const Size.fromHeight(50),
+        // minimumSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
+          borderRadius: BorderRadius.circular(borderRadius ?? AppStyle.defaultBorderRadius),
         ),
       ),
       child: _buildChild(child),
@@ -52,11 +54,11 @@ class DefaultButton extends StatelessWidget {
       style: OutlinedButton.styleFrom(
         primary: primaryColor ?? Colors.transparent,
         // padding: EdgeInsets.all(padding ?? 15),
-        minimumSize: const Size.fromHeight(50),
+        // minimumSize: const Size.fromHeight(50),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppStyle.defaultBorderRadius),
+          borderRadius: BorderRadius.circular(borderRadius ?? AppStyle.defaultBorderRadius),
         ),
-        side: BorderSide(color: borderColor ?? AppColor.primary),
+        side: BorderSide(color: borderColor ?? AppColor.primary, width: 1),
       ),
       child: _buildChild(child),
     );

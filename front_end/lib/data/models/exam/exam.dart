@@ -13,7 +13,7 @@ class Exam {
     required this.description,
     required this.image,
     required this.time,
-    // required this.questions,
+    required this.questionQuantity,
     this.tag,
     this.color,
     this.isFavorite = false,
@@ -24,6 +24,7 @@ class Exam {
   final String description;
   final String image;
   final int time;
+  final int questionQuantity;
   // final List<Question> questions;
   final String? tag;
   final Color? color;
